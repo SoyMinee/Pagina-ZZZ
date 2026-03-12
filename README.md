@@ -1,4 +1,4 @@
-Sitio Oficial de Zenless Zone Zero
+Basado en el Sitio Oficial de Zenless Zone Zero (https://zenless.hoyoverse.com/es-es/main)
 
 Tratar de imitar la escencia y estetica de la pagina para crear una guia para los personajes.
 
