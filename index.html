@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zenless Logic | The O Disk</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="scroll-wrapper">
+        <div class="main-viewport">
+            
+            <div id="hero" class="hero-container">
+                <h1 class="main-title">
+                    <span class="fade-text">ZENLESS L</span><span id="theO" class="morphed-o">O</span><span class="fade-text">GIC</span>
+                </h1>
+            </div>
+
+            <div id="uiLayer" class="character-ui">
+                <div class="info-box">
+                    <h2 id="charName">ANBY DEMARA</h2>
+                    <div class="tags">
+                        <span class="tag-accent">PROXIE</span>
+                        <span id="charType">ELECTRIC</span>
+                    </div>
+                    <p id="charDesc">Soldado eficiente de las Liebres Astutas. Su espada eléctrica no perdona.</p>
+                    
+                    <div class="nav-controls">
+                        <button class="btn-nav" onclick="changeChar(-1)">PREV</button>
+                        <button class="btn-nav active" onclick="changeChar(1)">NEXT</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
