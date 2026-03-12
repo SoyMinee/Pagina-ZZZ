@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zenless Logic | The O Disk</title>
+    <title>Zenless Logic | Proxies</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="crt-overlay"></div>
 
     <div class="scroll-wrapper">
         <div class="main-viewport">
-            
             <div id="hero" class="hero-container">
                 <h1 class="main-title">
                     <span class="fade-text">ZENLESS L</span><span id="theO" class="morphed-o">O</span><span class="fade-text">GIC</span>
@@ -18,24 +18,26 @@
             </div>
 
             <div id="uiLayer" class="character-ui">
+                <div class="char-display">
+                    <img id="mainCharImg" src="media/anby_full.png" alt="">
+                </div>
                 <div class="info-box">
                     <h2 id="charName">ANBY DEMARA</h2>
-                    <div class="tags">
-                        <span class="tag-accent">PROXIE</span>
-                        <span id="charType">ELECTRIC</span>
-                    </div>
-                    <p id="charDesc">Soldado eficiente de las Liebres Astutas. Su espada eléctrica no perdona.</p>
-                    
-                    <div class="nav-controls">
-                        <button class="btn-nav" onclick="changeChar(-1)">PREV</button>
-                        <button class="btn-nav active" onclick="changeChar(1)">NEXT</button>
+                    <p id="charDesc">Soldado táctico de las Liebres Astutas.</p>
+                    <div class="thumbnails-nav">
+                        <div class="nav-item" onclick="changeChar(-1)">
+                            <span>NEXT_FILE</span>
+                            <img id="thumbPrev" src="media/nicole_thumb.png" alt="">
+                        </div>
+                        <div class="nav-item" onclick="changeChar(1)">
+                            <span>PREV_FILE</span>
+                            <img id="thumbNext" src="media/billy_thumb.png" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>

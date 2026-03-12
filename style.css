@@ -2,83 +2,211 @@
 
 :root {
     --accent: #b6ff00;
-    --bg: #000000;
+    --bg-pure: #000000;
+    --bg-light: #121212; /* Color para la fibra de carbono */
 }
 
+/* 1. RESET Y OCULTAR SCROLL */
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+html, body {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    background-color: var(--bg-pure); /* Fondo base */
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* 2. FONDO TÉCNICO DE FIBRA DE CARBONO */
 body {
     margin: 0;
-    background: var(--bg);
+    /* Patrón de fibra de carbono optimizado */
+    background-image: 
+        linear-gradient(45deg, var(--bg-light) 25%, transparent 25%), 
+        linear-gradient(-45deg, var(--bg-light) 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, var(--bg-light) 75%), 
+        linear-gradient(-45deg, transparent 75%, var(--bg-light) 75%);
+    background-size: 10px 10px;
+    background-attachment: fixed;
     color: white;
     font-family: 'Space Mono', monospace;
     overflow-x: hidden;
 }
 
-.scroll-wrapper { height: 500vh; }
+/* 3. EFECTO CRT (SCANLINES) CON FLICKER AGRESIVO */
+.crt-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%, 
+        rgba(0, 0, 0, 0.25) 50% /* Scanlines más oscuras */
+    ), linear-gradient(
+        90deg, 
+        rgba(255, 0, 0, 0.03), 
+        rgba(0, 255, 0, 0.01), 
+        rgba(0, 0, 255, 0.03)
+    );
+    background-size: 100% 2px, 3px 100%;
+    z-index: 100;
+    pointer-events: none;
+    /* Animación de parpadeo y vibración */
+    animation: flicker 0.08s infinite, jitter 0.1s infinite;
+}
+
+/* Animación de parpadeo de brillo */
+@keyframes flicker {
+    0% { opacity: 0.85; }
+    20% { opacity: 0.98; }
+    40% { opacity: 0.7; }
+    60% { opacity: 0.95; }
+    80% { opacity: 0.8; }
+    100% { opacity: 0.98; }
+}
+
+/* Vibración vertical sutil (Jitter) típica de monitores viejos */
+@keyframes jitter {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(0.5px); }
+    100% { transform: translateY(-0.5px); }
+}
+
+/* Opcional: añade un ruido de estática muy suave para dar textura */
+.crt-overlay::before {
+    content: " ";
+    position: absolute;
+    inset: 0;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Remember.jpg");
+    opacity: 0.02; /* Ruido casi imperceptible pero que suma al feeling */
+    mix-blend-mode: overlay;
+    pointer-events: none;
+}
+
+/* 4. ESTRUCTURA DE SCROLL */
+.scroll-wrapper { 
+    height: 500vh; 
+}
 
 .main-viewport {
     position: sticky;
     top: 0;
     height: 100vh;
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    background-color: var(--bg);
+    /* IMPORTANTE: fondo transparente para ver la fibra del body */
+    background: transparent; 
 }
 
-.hero-container { z-index: 10; width: 100%; text-align: center; }
+/* 5. ELEMENTOS DEL LOGO */
+.hero-container {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+}
 
 .main-title {
     font-family: 'Archivo Black', sans-serif;
     font-size: 8vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0;
 }
 
-/* LA O QUE SE CONVIERTE EN DISCO */
 .morphed-o {
     color: var(--accent);
     display: inline-block;
-    position: relative;
-    z-index: 20;
     border-radius: 50%;
-    transition: color 0.3s, border-color 0.3s;
-    /* Evita que el texto se mueva al crecer */
-    flex-shrink: 0; 
+    border: 2px solid transparent; 
+    box-sizing: border-box;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    min-width: 0.9em;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.7); 
+    background-color: transparent; /* Se vuelve negra vía JS al expandirse */
 }
 
-/* Esta clase oculta el resto del texto gradualmente */
-.fade-text {
-    transition: opacity 0.3s, transform 0.3s;
+.fade-text { 
+    transition: opacity 0.3s; 
 }
 
-/* INTERFAZ FINAL */
+/* 6. UI DE PERSONAJES */
 .character-ui {
     position: absolute;
     inset: 0;
     opacity: 0;
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    z-index: 30;
+    z-index: 20;
     pointer-events: none;
     transition: opacity 0.5s;
 }
 
-.info-box {
-    margin-right: 5%;
-    width: 35%;
-    padding: 3rem;
-    background: rgba(0,0,0,0.8);
-    border-right: 10px solid var(--accent);
-    text-align: right;
-    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
+.char-display {
+    width: 65%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
 }
 
-.info-box h2 { font-family: 'Archivo Black', sans-serif; font-size: 3.5rem; color: var(--accent); margin: 0; }
-.tag-accent { background: var(--accent); color: black; padding: 2px 10px; font-weight: bold; }
-.nav-controls { margin-top: 2rem; display: flex; gap: 10px; justify-content: flex-end; }
-button { background: transparent; border: 1px solid white; color: white; padding: 10px 25px; cursor: pointer; font-family: inherit; }
-button.active { background: var(--accent); color: black; border-color: var(--accent); }
+#mainCharImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transform: translateX(-110%);
+    transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.info-box {
+    width: 35%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5%;
+    text-align: right;
+    /* Degradado sutil para no tapar toda la fibra de fondo */
+    background: linear-gradient(to left, rgba(0,0,0,0.85) 40%, transparent);
+    z-index: 40;
+}
+
+.info-box h2 { 
+    font-family: 'Archivo Black', sans-serif; 
+    font-size: 3rem; 
+    color: var(--accent); 
+}
+
+/* 7. NAVEGACIÓN */
+.thumbnails-nav { 
+    margin-top: 20px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 10px; 
+    align-items: flex-end; 
+}
+
+.nav-item { 
+    cursor: pointer; 
+}
+
+.nav-item img { 
+    width: 161px; 
+    height: 60px; 
+    border: 2px solid white; 
+    object-fit: cover; 
+    transition: 0.3s;
+}
+
+.nav-item:hover img { 
+    border-color: var(--accent); 
+    transform: scale(1.05);
+}

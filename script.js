@@ -1,61 +1,78 @@
 const proxies = [
-    { name: "ANBY DEMARA", color: "#b6ff00", type: "ELECTRIC", desc: "Fría, eficiente y amante de las hamburguesas. Soldado táctico de las Liebres Astutas." },
-    { name: "BILLY KID", color: "#ff3e3e", type: "FIRE", desc: "Cyborg apasionado por los shows de TV clásicos y sus revólveres 'Niñas'." },
-    { name: "NICOLE DEMARA", color: "#ff00ff", type: "ETHER", desc: "Fundadora de las Liebres Astutas. Su astucia solo es superada por sus deudas." }
+    { name: "ANBY DEMARA", color: "#b6ff00", desc: "Soldado táctico. Amante de las hamburguesas.", full: "media/anby_full.png", thumb: "media/anby_thumb.png" },
+    { name: "BILLY KID", color: "#ff3e3e", desc: "Cyborg apasionado por los revólveres.", full: "media/billy_full.png", thumb: "media/billy_thumb.png" },
+    { name: "NICOLE DEMARA", color: "#ff00ff", desc: "Líder de las Liebres Astutas.", full: "media/nicole_full.png", thumb: "media/nicole_thumb.png" }
 ];
 
-let currentProxy = 0;
+let currentIdx = 0;
 const theO = document.getElementById('theO');
 const fadeTexts = document.querySelectorAll('.fade-text');
 const uiLayer = document.getElementById('uiLayer');
+const mainImg = document.getElementById('mainCharImg');
 
 window.addEventListener('scroll', () => {
-    // Progreso del 0 al 1
-    const progress = Math.min(window.scrollY / (window.innerHeight * 1.5), 1);
+    const vh = window.innerHeight;
+    const progress = Math.min(window.scrollY / (vh * 1.5), 1);
     
-    // 1. Efecto de Transformación
-    const scale = 1 + (progress * 65); // Escala masiva
-    const xMove = progress * -45;     // Se desplaza a la izquierda (disco lateral)
+    // 1. Transformar la O
+    // Reducimos un poco el xMove para que el borde derecho sea visible
+    const scale = 1 + (progress * 70);
+    const xMove = progress * -41.5; // Ajustado para que se vea el arco derecho
     
     theO.style.transform = `translateX(${xMove}vw) scale(${scale})`;
     
-    // 2. La O actúa como máscara y disco
     if (progress > 0.05) {
-        // Añadimos borde para que parezca un disco sólido
-        theO.style.border = `${2 / scale}px solid var(--accent)`;
-        // El fondo negro de la O tapa lo que hay detrás
-        theO.style.backgroundColor = `rgba(0,0,0,${progress})`;
+        theO.style.backgroundColor = "black";
         
-        // Desvanecemos el resto del texto
-        fadeTexts.forEach(el => {
-            el.style.opacity = 1 - (progress * 4);
-            el.style.transform = `scale(${1 - progress})`;
-        });
+        // Aumentamos ligeramente el grosor relativo del borde (de 4 a 8)
+        // para que ese "bordecito" tenga más presencia visual
+        const borderThickness = 8 / scale; 
+        theO.style.border = `${borderThickness}px solid var(--accent) `;
+        
+        // Hacemos que el borde solo sea nítido en el lado derecho 
+        // (opcional, pero da un toque más limpio)
+        theO.style.borderRightWidth = `${12 / scale}px`; 
+
+        fadeTexts.forEach(t => t.style.opacity = 1 - (progress * 4));
     } else {
-        theO.style.border = "none";
         theO.style.backgroundColor = "transparent";
-        fadeTexts.forEach(el => {
-            el.style.opacity = 1;
-            el.style.transform = `scale(1)`;
-        });
+        theO.style.border = "0px solid transparent";
+        fadeTexts.forEach(t => t.style.opacity = 1);
     }
 
-    // 3. Activar UI Final
-    if (progress >= 1) {
+    // 2. Mostrar UI e imagen
+    // Bajamos un poco el umbral para que la transición sea más fluida
+    if (progress >= 0.9) {
         uiLayer.style.opacity = 1;
         uiLayer.style.pointerEvents = "all";
+        mainImg.style.transform = "translateX(0)";
     } else {
         uiLayer.style.opacity = 0;
         uiLayer.style.pointerEvents = "none";
+        mainImg.style.transform = "translateX(-110%)";
     }
 });
 
 function changeChar(dir) {
-    currentProxy = (currentProxy + dir + proxies.length) % proxies.length;
-    const data = proxies[currentProxy];
+    // Animación de salida rápida por la izquierda
+    mainImg.style.transform = "translateX(-110%)";
+    
+    setTimeout(() => {
+        currentIdx = (currentIdx + dir + proxies.length) % proxies.length;
+        const data = proxies[currentIdx];
+        
+        document.getElementById('charName').innerText = data.name;
+        document.getElementById('charDesc').innerText = data.desc;
+        document.documentElement.style.setProperty('--accent', data.color);
+        mainImg.src = data.full;
 
-    document.getElementById('charName').innerText = data.name;
-    document.getElementById('charDesc').innerText = data.desc;
-    document.getElementById('charType').innerText = data.type;
-    document.documentElement.style.setProperty('--accent', data.color);
+        // Actualizar miniaturas de los botones
+        const prevIdx = (currentIdx - 1 + proxies.length) % proxies.length;
+        const nextIdx = (currentIdx + 1) % proxies.length;
+        document.getElementById('thumbPrev').src = proxies[prevIdx].thumb;
+        document.getElementById('thumbNext').src = proxies[nextIdx].thumb;
+
+        // Animación de entrada
+        mainImg.style.transform = "translateX(0)";
+    }, 300);
 }
