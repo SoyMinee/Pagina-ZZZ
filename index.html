@@ -24,23 +24,92 @@
                     <img id="mainCharImg" src="media/anby_full.png" alt="">
                 </div>
 
-                <div class="info-box">
-                    <h2 id="charName">ANBY DEMARA</h2>
-                    <p id="charDesc">Soldado táctico de las Liebres Astutas.</p>
-                    <div class="thumbnails-nav">
-                        <div class="nav-item" onclick="changeChar(-1)">
-                            <span>NEXT_FILE</span>
-                            <img id="thumbPrev" src="media/zhuyuan_thumb.png" alt="">
+                <div class="info-box" id="infoBox">
+                    
+                    <div id="summaryView">
+                        <h2 id="charName">ANBY DEMARA</h2>
+                        <p id="charDesc">Soldado táctico de las Liebres Astutas.</p>
+                        
+                        <div class="thumbnails-nav">
+                            <div class="nav-item" onclick="changeChar(-1)">
+                                <span>PREV_FILE</span>
+                                <img id="thumbPrev" src="media/cissia_thumb.png" alt="">
+                            </div>
+                            <div class="nav-item" onclick="changeChar(1)">
+                                <span>NEXT_FILE</span>
+                                <img id="thumbNext" src="media/nicole_thumb.png" alt="">
+                            </div>
                         </div>
-                        <div class="nav-item" onclick="changeChar(1)">
-                            <span>PREV_FILE</span>
-                            <img id="thumbNext" src="media/billy_thumb.png" alt="">
+
+                        <div class="action-buttons">
+                            <button class="btn-zzz select-btn" onclick="selectAgent()">
+                                <span class="btn-tag">//</span> SELECT_AGENT
+                            </button>
+                            <button class="btn-zzz list-btn" onclick="showFullList()">
+                                <span class="btn-tag">::</span> DATA_BANK
+                            </button>
                         </div>
                     </div>
-                </div>
-            </div>
+
+                    <div id="detailsView" class="details-panel">
+                        <div class="details-grid">
+                            <div class="col-left">
+                                <h3>SETS RECOMENDADOS</h3>
+                                <div class="sets-container">
+                                    <div class="set-item">
+                                        <div class="set-placeholder"></div>
+                                        <span>SET_01</span>
+                                    </div>
+                                    <div class="set-item">
+                                        <div class="set-placeholder"></div>
+                                        <span>SET_02</span>
+                                    </div>
+                                </div>
+
+                                <div class="role-section">
+                                    <p>ROL: <span id="charRole" class="accent-text">---</span></p>
+                                </div>
+
+                                <h3>ORDEN DE MEJORAS</h3>
+                                <div class="skills-priority">
+                                    <div class="skill-slot" title="Letras">L</div>
+                                    <div class="skill-slot" title="Habilidad">H</div>
+                                    <div class="skill-slot" title="Básicos">B</div>
+                                    <div class="skill-slot" title="Definitiva">D</div>
+                                </div>
+                                <button class="btn-zzz small-btn" onclick="backToSummary()">[ BACK_TO_FILES ]</button>
+                            </div>
+
+                            <div class="col-right">
+                                <h3>RECOMMENDED_TEAMS</h3>
+                                <div id="teamsContainer" class="teams-container">
+                                    <div class="team-row">
+                                        <img src="media/anby_thumb.png" class="team-thumb">
+                                        <img src="media/billy_thumb.png" class="team-thumb">
+                                        <img src="media/nicole_thumb.png" class="team-thumb">
+                                    </div>
+                                    <div class="team-row">
+                                        <img src="media/anby_thumb.png" class="team-thumb">
+                                        <img src="media/rina_thumb.png" class="team-thumb">
+                                        <img src="media/seth_thumb.png" class="team-thumb">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> </div> </div>
         </div>
     </div>
+
+    <div id="dataBankModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="btn-tag">//</span> DATABASE_ACCESS_GRANTED
+                <button class="close-modal" onclick="closeFullList()">[ ESC_CLOSE ]</button>
+            </div>
+            <div id="agentsGrid" class="agents-grid"></div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
