@@ -210,3 +210,41 @@ body {
     border-color: var(--accent); 
     transform: scale(1.05);
 }
+
+/* 8. MARQUEE BACKGROUND (NOMBRE ANIMADO) */
+.marquee-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1; /* Detrás de la imagen del personaje */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    user-select: none;
+    pointer-events: none;
+    white-space: nowrap;
+    /* Ajustes de sutileza extrema */
+    opacity: 0.10; 
+    filter: blur(1px); /* Un toque de desenfoque para que no distraiga */
+}
+
+.marquee-line {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 15vh; /* Texto gigante */
+    line-height: 1;
+    color: white;
+    display: flex;
+    gap: 50px;
+    animation: scrollText 20s linear infinite;
+}
+
+/* Segunda línea opcional con dirección opuesta para más dinamismo */
+.marquee-line.reverse {
+    animation-direction: reverse;
+    margin-left: -500px;
+}
+
+@keyframes scrollText {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
