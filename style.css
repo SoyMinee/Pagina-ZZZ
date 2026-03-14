@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@700&display=swap');
 
 :root {
-    --accent: #b6ff00;
+    --accent: #bce146;
     --bg-pure: #000000;
     --bg-light: #121212; /* Color para la fibra de carbono */
 }
@@ -498,6 +498,7 @@ body {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.2);
     position: relative;
+    display:inline-flex;
     transition: border-color 0.3s;
 }
 
