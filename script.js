@@ -1,5 +1,5 @@
 const proxies = [
-    { name: "ANBY DEMARA",  role: "STUNNER", team:[32,1,24,8],sets:[17,19],skillOrder:[], color: "#bce146", desc: "Soldado táctico de las Liebres Astutas. Su estilo es eficiente y pragmático.", full: "media/anby_full.png", thumb: "media/anby_thumb.png" },
+    { name: "ANBY DEMARA",  role: "STUNNER", team:[32,1,24,8],sets:[17,19],skillOrder:['L','H','D','B'], color: "#bce146", desc: "Soldado táctico de las Liebres Astutas. Su estilo es eficiente y pragmático.", full: "media/anby_full.png", thumb: "media/anby_thumb.png" },
     { name: "NICOLE DEMARA",role: "SUPPORT", team:[32,1,24,8],sets:[18,20],skillOrder:[], color: "#fe407f", desc: "Fundadora de las Liebres Astutas. Su astucia supera a la de cualquier liebre.", full: "media/nicole_full.png", thumb: "media/nicole_thumb.png" },
     { name: "BILLY KID",    role: "DPS", team:[32,1,24,8],sets:[18,20],skillOrder:[], color: "#ff0000", desc: "Cyborg de las Liebres Astutas. Un pistolero entusiasta y algo excéntrico.", full: "media/billy_full.png", thumb: "media/billy_thumb.png" },
     { name: "NEKOMATA",     role: "DPS", team:[32,1,24,8],sets:[18,20],skillOrder:[], color: "#ffd752", desc: "Investigadora Thiren. Ágil, curiosa y extremadamente rápida.", full: "media/nekomata_full.png", thumb: "media/nekomata_thumb.png" },
@@ -30,67 +30,67 @@ const proxies = [
     { name: "JANE DOE",    role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#ffffff", desc: "Agente encubierta de la Unidad de Investigación Criminal. Impredecible y letal.", full: "media/jane_full.png", thumb: "media/jane_thumb.png" },
     
     { name: "HARUMASA", role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#5552ff", desc: "Agente de la División N.º 6. Un arquero eléctrico de precisión letal.", full: "media/harumasa_full.png", thumb: "media/harumasa_thumb.png" },
-    { name: "MIYABI", role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#b4ebff", desc: "Heredera de la familia Hoshimi. Líder de la División N.º 6.", full: "media/miyabi_full.png", thumb: "media/miyabi_thumb.png" },
-    { name: "SOUKAKU", role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#009dff", desc: "Miembro de la División N.º 6. Un Oni azul con un apetito insaciable.", full: "media/soukaku_full.png", thumb: "media/soukaku_thumb.png" },
-    { name: "YANAGI", role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#89d5f3", desc: "Vice-líder de la División N.º 6. Experta en el manejo de anomalías eléctricas.", full: "media/yanagi_full.png", thumb: "media/yanagi_thumb.png" },
+    { name: "MIYABI",   role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#b4ebff", desc: "Heredera de la familia Hoshimi. Líder de la División N.º 6.", full: "media/miyabi_full.png", thumb: "media/miyabi_thumb.png" },
+    { name: "SOUKAKU",  role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#009dff", desc: "Miembro de la División N.º 6. Un Oni azul con un apetito insaciable.", full: "media/soukaku_full.png", thumb: "media/soukaku_thumb.png" },
+    { name: "YANAGI",   role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#89d5f3", desc: "Vice-líder de la División N.º 6. Experta en el manejo de anomalías eléctricas.", full: "media/yanagi_full.png", thumb: "media/yanagi_thumb.png" },
 
-    { name: "SOLDIER 11", role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#ff4400", desc: "Soldado del Batallón Óbolos. Una guerrera eficiente que solo vive para la misión.", full: "media/soldier6_full.png", thumb: "media/soldier6_thumb.png" },
-    { name: "TRIGGER", role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#2600ff", desc: "Agente del Batallón Óbolos. Especialista en reconocimiento y apoyo eléctrico.", full: "media/trigger_full.png", thumb: "media/trigger_thumb.png" },
-    { name: "SEED", role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#ffffff", desc: "Los proxies son como... espíritus afines. Igual que los tréboles de cuatro hojas o las flores de canola.", full: "media/seed_full.png", thumb: "media/seed_thumb.png"},
-    { name: "ORPHIE & MAGUS", role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#ff4400", desc: "La capitana sabe muy bien lo que hace. La agitación emocional nunca nubla su puntería.", full: "media/orphie_full.png", thumb: "media/orphie_thumb.png"},
+    { name: "SOLDIER 11",       role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#ff4400", desc: "Soldado del Batallón Óbolos. Una guerrera eficiente que solo vive para la misión.", full: "media/soldier6_full.png", thumb: "media/soldier6_thumb.png" },
+    { name: "TRIGGER",          role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#2600ff", desc: "Agente del Batallón Óbolos. Especialista en reconocimiento y apoyo eléctrico.", full: "media/trigger_full.png", thumb: "media/trigger_thumb.png" },
+    { name: "SEED",             role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#ffffff", desc: "Los proxies son como... espíritus afines. Igual que los tréboles de cuatro hojas o las flores de canola.", full: "media/seed_full.png", thumb: "media/seed_thumb.png"},
+    { name: "ORPHIE & MAGUS",   role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#ff4400", desc: "La capitana sabe muy bien lo que hace. La agitación emocional nunca nubla su puntería.", full: "media/orphie_full.png", thumb: "media/orphie_thumb.png"},
 
     { name: "SILVER SOLDIER ANBY", role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#fff200", desc: "Anby, tanto de su día a día como de sus combates.", full: "media/sanby_full.png", thumb: "media/sanby_thumb.png"},
 
-    { name: "VIVIAN BANSHEE", role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#b4009f", desc: "Vivian es miembro de Ruiseñor. Es experta en reunir informes de todo tipo y dispone de habilidades muy variadas", full: "media/vivian_full.png", thumb: "media/vivian_thumb.png"},
-    { name: "HUGO VLAD", role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#6ec8ff", desc: "Es el líder de Ruiseñor, la organización de ladrones de arte. ", full: "media/hugo_full.png", thumb: "media/hugo_thumb.png"},
+    { name: "VIVIAN BANSHEE",   role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#b4009f", desc: "Vivian es miembro de Ruiseñor. Es experta en reunir informes de todo tipo y dispone de habilidades muy variadas", full: "media/vivian_full.png", thumb: "media/vivian_thumb.png"},
+    { name: "HUGO VLAD",        role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#6ec8ff", desc: "Es el líder de Ruiseñor, la organización de ladrones de arte. ", full: "media/hugo_full.png", thumb: "media/hugo_thumb.png"},
 
-    { name: "PAN YINHU", role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#fbff00", desc: "¡Incluso las plantas saben que deben alimentarse de la tierra y beber rocío, así que no hay manera que podamos practicar con el estómago vacío!", full: "media/panda_full.png", thumb: "media/panda_thumb.png"},
-    { name: "YIXUAN",role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#e1b46c", desc: "Gran maestra del templo Yunkui", full: "media/yixuan_full.png", thumb: "media/yixuan_thumb.png"},
-    { name: "JU FUFU", role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#ff9500", desc: "¡Tigres feroces merodean por la Cima Yunkui, donde los héroes justos muestran su poder!", full: "media/fufu_full.png", thumb: "media/fufu_thumb.png"},
+    { name: "PAN YINHU",    role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#fbff00", desc: "¡Incluso las plantas saben que deben alimentarse de la tierra y beber rocío, así que no hay manera que podamos practicar con el estómago vacío!", full: "media/panda_full.png", thumb: "media/panda_thumb.png"},
+    { name: "YIXUAN",       role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#e1b46c", desc: "Gran maestra del templo Yunkui", full: "media/yixuan_full.png", thumb: "media/yixuan_thumb.png"},
+    { name: "JU FUFU",      role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#ff9500", desc: "¡Tigres feroces merodean por la Cima Yunkui, donde los héroes justos muestran su poder!", full: "media/fufu_full.png", thumb: "media/fufu_thumb.png"},
     
-    { name: "ALICE", role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#ffd992", desc: "Agente de Spook Shack. Obsesa de la simetría y perfección.", full: "media/alice_full.png", thumb: "media/alice_thumb.png" },
-    { name: "YUZUHA", role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#ff3b3b", desc: "«¿Crees que tienes mala suerte? ¿Quieres que te dé un consejo?»", full: "media/yuzuha_full.png", thumb: "media/yuzuha_thumb.png"},
-    { name: "LUCÍA", role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#63e2fc", desc: "Lucía, uno de los miembros de la Cabaña del Terror, es conocida en línea como «Emisaria Nocturna». ", full: "media/lucia_full.png", thumb: "media/lucia_thumb.png"},
-    { name: "MANATO", role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#f40505", desc: "«Si hay algún problema, ponte detrás de mí.»", full: "media/manato_full.png", thumb: "media/manato_thumb.png"},
-    { name: "YIDHARI", role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#9e0673", desc: "«Ojalá ninguna historia tuviera final, así tendría el valor de seguir pasando las páginas eternamente.»", full: "media/yidhari_full.png", thumb: "media/yidhari_thumb.png"},
+    { name: "ALICE",    role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#ffd992", desc: "Agente de Spook Shack. Obsesa de la simetría y perfección.", full: "media/alice_full.png", thumb: "media/alice_thumb.png" },
+    { name: "YUZUHA",   role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#ff3b3b", desc: "«¿Crees que tienes mala suerte? ¿Quieres que te dé un consejo?»", full: "media/yuzuha_full.png", thumb: "media/yuzuha_thumb.png"},
+    { name: "LUCÍA",    role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#63e2fc", desc: "Lucía, uno de los miembros de la Cabaña del Terror, es conocida en línea como «Emisaria Nocturna». ", full: "media/lucia_full.png", thumb: "media/lucia_thumb.png"},
+    { name: "MANATO",   role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#f40505", desc: "«Si hay algún problema, ponte detrás de mí.»", full: "media/manato_full.png", thumb: "media/manato_thumb.png"},
+    { name: "YIDHARI",  role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#9e0673", desc: "«Ojalá ninguna historia tuviera final, así tendría el valor de seguir pasando las páginas eternamente.»", full: "media/yidhari_full.png", thumb: "media/yidhari_thumb.png"},
 
-    { name: "BANGYUE", role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#ff8a2a", desc: "Agente de Auditoría Krampus. Combatiente eléctrica de gran agilidad.", full: "media/bangyue_full.png", thumb: "media/bangyue_thumb.png" },
-    { name: "DIALYN", role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#fff56b", desc: "Agente de Auditoría Krampus. Su conocimiento etéreo es su mejor arma.", full: "media/dyalin_full.png", thumb: "media/dyalin_thumb.png" },
-    { name: "ZHAO", role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#ff8adc", desc: "«Ya que has venido, ¿qué tal si hacemos un trato?»", full: "media/zhao_full.png", thumb: "media/zhao_thumb.png"},
+    { name: "BANGYUE",  role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#ff8a2a", desc: "Agente de Auditoría Krampus. Combatiente eléctrica de gran agilidad.", full: "media/bangyue_full.png", thumb: "media/bangyue_thumb.png" },
+    { name: "DIALYN",   role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#fff56b", desc: "Agente de Auditoría Krampus. Su conocimiento etéreo es su mejor arma.", full: "media/dyalin_full.png", thumb: "media/dyalin_thumb.png" },
+    { name: "ZHAO",     role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#ff8adc", desc: "«Ya que has venido, ¿qué tal si hacemos un trato?»", full: "media/zhao_full.png", thumb: "media/zhao_thumb.png"},
 
-    { name: "ARIA", role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#976bff", desc: "Miembro de Ángeles de la Delusión. Posee una alta afinidad al Éter.", full: "media/aria_full.png", thumb: "media/aria_thumb.png" },
-    { name: "SUNNA", role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#36ff8d", desc: "«¡Aaah! Estoy tan nerviosa... Ojalá pudiera... ¡hacer desaparecer a toda la audiencia!»", full: "media/sunna_full.png", thumb: "media/sunna_thumb.png"},
-    { name: "NAGONG YU", role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#ff5ef7", desc: "Miembro de los Ángeles de la Delusión", full: "media/nao_full.png", thumb: "media/nao_thumb.png"},
+    { name: "ARIA",     role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#976bff", desc: "Miembro de Ángeles de la Delusión. Posee una alta afinidad al Éter.", full: "media/aria_full.png", thumb: "media/aria_thumb.png" },
+    { name: "SUNNA",    role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#36ff8d", desc: "«¡Aaah! Estoy tan nerviosa... Ojalá pudiera... ¡hacer desaparecer a toda la audiencia!»", full: "media/sunna_full.png", thumb: "media/sunna_thumb.png"},
+    { name: "NAGONG YU",role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color: "#ff5ef7", desc: "Miembro de los Ángeles de la Delusión", full: "media/nao_full.png", thumb: "media/nao_thumb.png"},
 
     { name: "CISSIA", role: "STUNNER", team:[32,1,2,8],sets:[1,2],skillOrder:[], color:"#9f37e9", desc: "«Yo solo entiendo de una cosa: si algo me gusta, le hinco los dientes y no lo dejo marchar.»", full: "media/cissia_full.png", thumb: "media/cissia_thumb.png"}
     
 ];
 
 const discs = [
-    { disc: "astral_voice"},        //1
-    { disc: "branch_blade"},        //2
-    { disc: "chaos_jazz"},          //3
-    { disc: "chaotic_metal"},       //4
-    { disc: "dawns_bloom"},         //5
-    { disc: "fanged_metal"},        //6
-    { disc: "freedom_blues"},       //7
-    { disc: "hormone_punk"},        //8
-    { disc: "infierno_metal"},      //9
-    { disc: "king_summit"},         //10
-    { disc: "moonlight_lullaby"},   //11
-    { disc: "phaetons_melody"},     //12
-    { disc: "polar_metal"},         //13
-    { disc: "proto_punk"},          //14
-    { disc: "puffer_electro"},      //15
-    { disc: "shadow_harmony"},      //16
-    { disc: "shining_aria"},        //17
-    { disc: "shockstar_disco"},     //18
-    { disc: "soul_rock"},           //19
-    { disc: "swing_jazz"},          //20
-    { disc: "thunder_metal"},       //21
-    { disc: "white_water_ballad"},  //22
-    { disc: "woodpecker_electro"},  //23
-    { disc: "yunkui_tales"},        //24
+    { disc: "astral_voice"},        //0
+    { disc: "branch_blade"},        //1
+    { disc: "chaos_jazz"},          //2
+    { disc: "chaotic_metal"},       //3
+    { disc: "dawns_bloom"},         //4
+    { disc: "fanged_metal"},        //5
+    { disc: "freedom_blues"},       //6
+    { disc: "hormone_punk"},        //7
+    { disc: "infierno_metal"},      //8
+    { disc: "king_summit"},         //9
+    { disc: "moonlight_lullaby"},   //10
+    { disc: "phaetons_melody"},     //11
+    { disc: "polar_metal"},         //12
+    { disc: "proto_punk"},          //13
+    { disc: "puffer_electro"},      //14
+    { disc: "shadow_harmony"},      //15
+    { disc: "shining_aria"},        //16
+    { disc: "shockstar_disco"},     //17
+    { disc: "soul_rock"},           //18
+    { disc: "swing_jazz"},          //19
+    { disc: "thunder_metal"},       //20
+    { disc: "white_water_ballad"},  //21
+    { disc: "woodpecker_electro"},  //22
+    { disc: "yunkui_tales"},        //23
 
 ]
 
@@ -103,6 +103,17 @@ const mainImg = document.getElementById('mainCharImg');
 window.addEventListener('scroll', () => {
     const vh = window.innerHeight;
     const progress = Math.min(window.scrollY / (vh * 1.5), 1);
+    const scrollPos = window.scrollY;
+    const scrollHint = document.getElementById('scrollHint');
+    
+    // Si el usuario ha bajado más de 50px, ocultamos el aviso
+    if (scrollPos > 50) {
+        scrollHint.style.opacity = '0';
+        scrollHint.style.pointerEvents = 'none';
+    } else {
+        scrollHint.style.opacity = '1';
+        scrollHint.style.pointerEvents = 'all';
+    }
     
     // 1. Transformar la O
     // Reducimos un poco el xMove para que el borde derecho sea visible
@@ -192,12 +203,6 @@ function changeChar(dir) {
 // Llamar una vez al cargar para el primer personaje
 updateMarquee(proxies[0].name);
 
-
-function selectAgent() {
-    console.log("Agente seleccionado: " + proxies[currentIdx].name);
-    // Aquí irá la funcionalidad que me digas
-}
-
 const modal = document.getElementById('dataBankModal');
 const grid = document.getElementById('agentsGrid');
 
@@ -258,6 +263,7 @@ window.onclick = function(event) {
 }
 
 function selectAgent() { //MOSTRAR GUIA
+    
     const infoBox = document.getElementById('infoBox');
     const data = proxies[currentIdx];
     const path4pc = "media/discos/"+discs[data.sets.at(0)].disc+".webp"; //Segunda posicion del array de sets = 4pcs
@@ -265,6 +271,8 @@ function selectAgent() { //MOSTRAR GUIA
     
     // Actualizar el rol en el panel de detalles antes de mostrarlo
     document.getElementById('charRole').innerText = data.role || "TBD";
+
+    document.getElementById('webtitle').innerText= "Zenless Logic | "+data.name;
     
     // Animación de expansión
     infoBox.classList.add('expanded');
@@ -284,12 +292,51 @@ function selectAgent() { //MOSTRAR GUIA
     document.getElementById('tm3').src = proxies[data.team.at(2)].thumb;
     document.getElementById('tm4').src = proxies[data.team.at(3)].thumb; //Segundo Equipo
 
+    // Añadimos clase de expansión a ambos para controlar el degradado de la imagen
+    uiLayer.classList.add('agent-selected');
+
     document.body.style.overflow = 'hidden';
+
+    // 2. Generar el Orden de Habilidades dinámicamente con IMÁGENES
+    const skillsContainer = document.querySelector('.skills-priority');
+    skillsContainer.innerHTML = ""; // Limpiamos
+
+    if (data.skillOrder) {
+        data.skillOrder.forEach(skill => {
+            const slot = document.createElement('div');
+            slot.className = 'skill-slot';
+            
+            // Mapeo de iniciales a nombres completos para el "tooltip"
+            const skillNames = { 'L': 'Pasiva', 'H': 'Habilidad Special', 'B': 'Básicos', 'D': 'Definitiva (Ulti)' };
+            slot.title = skillNames[skill];
+            
+            // NUEVO: Mapeo de iniciales a nombres de ARCHIVO
+            const skillFiles = { 'L': 'letras.webp', 'H': 'special.webp', 'B': 'basicos.webp', 'D': 'ulti.webp' };
+            
+            // Crear la imagen y añadirla al slot
+            const img = document.createElement('img');
+            img.src = `media/ico/${skillFiles[skill]}`; // Ruta completa a la imagen
+            img.alt = skillNames[skill];
+            
+            slot.appendChild(img); // Añadimos la imagen
+            skillsContainer.appendChild(slot); // Añadimos el slot al contenedor
+            
+            // Flecha entre habilidades excepto la última
+            if (data.skillOrder.indexOf(skill) < data.skillOrder.length - 1) {
+                const arrow = document.createElement('span');
+                arrow.className = 'skill-arrow'; // Añadimos clase para CSS
+                arrow.innerText = ">";
+                skillsContainer.appendChild(arrow);
+            }
+        });
+    }
 }
 
 function backToSummary() {
     const infoBox = document.getElementById('infoBox');
+    document.getElementById('webtitle').innerText= "Zenless Logic";
     infoBox.classList.remove('expanded');
+    uiLayer.classList.remove('agent-selected');
 
     document.body.style.overflow = 'auto';
 }

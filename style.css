@@ -175,9 +175,12 @@ body {
     padding: 5%;
     padding-left: 2%;
     text-align: right;
+    transition: width 0.6s cubic-bezier(0.19, 1, 0.22, 1), background 0.5s;
+    overflow: hidden;
     /* Degradado sutil para no tapar toda la fibra de fondo */
     background: linear-gradient(to left, rgba(0,0,0,0.85) 40%, transparent);
     z-index: 40;
+    min-width: 450px; /* Evita que se estreche demasiado */
 }
 
 .info-box h2 { 
@@ -433,11 +436,6 @@ body {
 /* 11. EXTENSIÓN VISTA DE DETALLES (NUEVO) */
 
 /* Gestión de estados de la info-box */
-.info-box {
-    transition: width 0.6s cubic-bezier(0.19, 1, 0.22, 1), background 0.5s;
-    overflow: hidden;
-}
-
 .info-box.expanded {
     width: 70%; 
     background: linear-gradient(to left, rgba(0,0,0,0.98) 80%, transparent);
@@ -451,6 +449,53 @@ body {
     opacity: 0;
     transform: translateX(30px);
     transition: all 0.5s ease 0.2s; /* Delay para esperar a que la caja se ensanche */
+}
+
+/* Contenedor de Texto: Le damos un alto fijo para que no empuje el resto */
+#summaryView {
+    display: flex;
+    flex-direction: column;
+    height: 520px; 
+    justify-content: flex-end; /* Alineamos todo el contenido a la base */
+}
+
+/* Estilizamos el área del nombre y descripción */
+#summaryView h2 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 3rem;
+    line-height: 1; /* Evita espacios excesivos entre líneas */
+    margin-bottom: 15px;
+    height: auto;       /* Quitamos la altura fija */
+    overflow: visible;  /* Permitimos que se vea todo el nombre */
+    display: block;     /* Cambiamos a block para que el texto fluya natural */
+    text-align: right;
+    text-transform: uppercase;
+}
+#summaryView p {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #edecec;
+    font-weight: bold;
+    text-shadow: 
+        0 0 1px rgba(0,0,0,1), 
+        0 0 2px rgba(0,0,0,0.7),
+        0 0 4px #000; /* Triple sombra negra para contraste */
+    margin-bottom: 20px;
+    /* Mantenemos una altura mínima para la descripción 
+       así los botones no bailan si la descripción es corta */
+    min-height: 3em; 
+    max-width: 400px;
+    margin-left: auto; /* Alinea el bloque de texto a la derecha */
+}
+
+/* Forzamos que la navegación y botones no se muevan */
+.thumbnails-nav {
+    margin-top: auto; /* Empuja hacia abajo pero dentro del bloque fijo */
+    margin-bottom: 20px;
+}
+
+.action-buttons {
+    margin-top: 0; 
 }
 
 .info-box.expanded #summaryView {
@@ -469,11 +514,53 @@ body {
     width: 100%;
 }
 
+/* 1. Ajuste del contenedor de la cuadrícula de detalles */
 .details-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    margin-top: 20px;
+    /* Reducimos el gap para que no empuje la columna derecha fuera */
+    grid-template-columns: 1fr 1.1fr; 
+    gap: 25px; 
+    margin-top: 15px;
+    width: 100%;
+    /* Importante para que los equipos no se desborden */
+    overflow: hidden; 
+}
+
+/* 2. Ajuste de los equipos para que sean más compactos */
+.teams-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.team-row {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 8px; /* Reducimos padding interno */
+    display: flex; 
+    gap: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%; /* Forzamos que se mantenga en su columna */
+}
+
+/* 3. Reducimos el tamaño de las miniaturas de equipo para ganar espacio */
+.team-thumb {
+    width: 75px;  /* Bajamos de 90px a 75px */
+    height: 42px; 
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* 4. Ajuste de la caja de información expandida */
+.info-box.expanded {
+    width: 75%; /* Ajustamos el ancho total */
+    padding-right: 3%; /* Añadimos un pequeño margen de seguridad a la derecha */
+    background: linear-gradient(to left, rgba(0,0,0,0.98) 85%, transparent);
+}
+
+/* 5. Asegurar que los títulos no ocupen demasiado */
+.details-grid h3 {
+    font-size: 0.7rem; /* Un poco más pequeño para evitar saltos de línea */
+    white-space: nowrap;
 }
 
 .details-grid h3 {
@@ -532,32 +619,48 @@ body {
 }
 
 .skill-slot {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     background: rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid var(--accent);
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
     color: var(--accent);
+    clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%); /* Look técnico ZZZ */
     cursor: help;
+}
+
+.skill-slot img {
+    width: 80%; /* Deja un pequeño margen interno */
+    height: 80%;
+    object-fit: contain; /* Asegura que la imagen no se estire */
+    filter: brightness(1.1); /* Ligero realce para que resalte más */
+}
+
+/* Estilo para las flechas entre habilidades */
+.skill-arrow {
+    opacity: 0.3;
+    font-size: 0.8rem;
+    align-self: center;
+    color: white;
 }
 
 /* Equipos Recomendados */
 .teams-container {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 15px;  
 }
 
 .team-row {
-    background: rgba(255, 255, 255, 0.03);
-    padding: 12px;
-    display: flex;
-    gap: 10px;
+background: rgba(255, 255, 255, 0.03);
+    padding: 8px; /* Reducimos padding interno */
+    display: flex; 
+    gap: 8px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: background 0.3s;
+    width: 100%; /* Forzamos que se mantenga en su columna */
 }
 
 .team-row:hover {
@@ -565,8 +668,8 @@ body {
 }
 
 .team-thumb {
-    width: 90px;
-    height: 50px;
+    width: 90px;  /* Bajamos de 90px a 75px */
+    height: 42px; 
     object-fit: cover;
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -582,4 +685,78 @@ body {
 
 .small-btn:hover {
     opacity: 1;
+}
+
+/* 12. INDICADOR SCROLL DOWN */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    z-index: 50;
+    transition: opacity 0.5s ease;
+}
+
+.scroll-indicator .arrows {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.scroll-indicator .arrows span {
+    font-family: monospace;
+    line-height: 0.6;
+    animation: arrowBounce 1.5s infinite;
+}
+
+/* Retraso para que las flechas se muevan en cascada */
+.scroll-indicator .arrows span:nth-child(2) { animation-delay: 0.2s; }
+.scroll-indicator .arrows span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes arrowBounce {
+    0%, 100% { opacity: 0.2; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(5px); }
+}
+
+/* 13. BOTÓN LOGIN LATERAL */
+.side-nav {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    z-index: 60;
+}
+
+.login-btn {
+    width: 180px !important; /* Un poco más pequeño que los centrales */
+    padding: 8px 15px !important;
+    font-size: 0.75rem !important;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+/* EFECTO DE FUNDIDO PARA LA IMAGEN */
+/* Por defecto no tiene máscara */
+#mainCharImg {
+    mask-image: linear-gradient(to right, rgba(0,0,0,1) 100%, rgba(0,0,0,0) 100%);
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 100%, rgba(0,0,0,0) 100%);
+    transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1), mask-image 0.5s, -webkit-mask-image 0.5s;
+}
+
+/* SOLO cuando la info-box está expandida (se ha seleccionado agente) */
+/* Aplicamos el degradado al final de la imagen (lado derecho) */
+.info-box.expanded ~ .char-display #mainCharImg, 
+.info-box.expanded #mainCharImg, /* Por si la estructura varía ligeramente */
+#infoBox.expanded ~ .char-display #mainCharImg {
+    mask-image: linear-gradient(to right, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 98%);
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 98%);
+}
+
+/* Ajuste adicional por si acaso: si tu char-display y info-box son hermanos directos */
+.character-ui:has(.info-box.expanded) #mainCharImg {
+    mask-image: linear-gradient(to right, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 98%);
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 98%);
 }

@@ -3,14 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zenless Logic | Proxies</title>
+    <title id="webtitle">Zenless Logic</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="media/logo.png">
 </head>
 <body>
     <div class="crt-overlay"></div>
 
     <div class="scroll-wrapper">
         <div class="main-viewport">
+            <div class="scroll-indicator" id="scrollHint">
+                <p>SCROLL DOWN</p>
+                <div class="arrows">
+                    <span>v</span>
+                    <span>v</span>
+                    <span>v</span>
+                </div>
+            </div>
+
+            <div class="side-nav">
+                <button class="btn-zzz login-btn">
+                    <span class="btn-tag">>></span> ACCESS_LOGIN
+                </button>
+            </div>
             <div id="hero" class="hero-container">
                 <h1 class="main-title">
                     <span class="fade-text">ZENLESS L</span><span id="theO" class="morphed-o">O</span><span class="fade-text">GIC</span>
@@ -28,7 +43,7 @@
                     
                     <div id="summaryView">
                         <h2 id="charName">ANBY DEMARA</h2>
-                        <p id="charDesc">Soldado táctico de las Liebres Astutas.</p>
+                        <p id="charDesc">Soldado táctico de las Liebres Astutas.  Su estilo es eficiente y pragmático.</p>
                         
                         <div class="thumbnails-nav">
                             <div class="nav-item" onclick="changeChar(-1)">
@@ -76,10 +91,10 @@
 
                                 <h3>ORDEN DE MEJORAS</h3>
                                 <div class="skills-priority">
-                                    <div class="skill-slot" title="Letras">L</div>
-                                    <div class="skill-slot" title="Habilidad">H</div>
-                                    <div class="skill-slot" title="Básicos">B</div>
-                                    <div class="skill-slot" title="Definitiva">D</div>
+                                    <div class="skill-slot" title="Letras"></div>
+                                    <div class="skill-slot" title="Habilidad"></div>
+                                    <div class="skill-slot" title="Básicos"></div>
+                                    <div class="skill-slot" title="Definitiva"></div>
                                 </div>
                                 <button class="btn-zzz small-btn" onclick="backToSummary()">[ BACK_TO_FILES ]</button>
                             </div>
