@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let isRegisterMode = false;
 
-    // 1. Cambiar entre Login y Registro
     toggleBtn.addEventListener('click', () => {
         isRegisterMode = !isRegisterMode;
         nameGroup.style.display = isRegisterMode ? 'block' : 'none';
@@ -18,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
         resetErrors();
     });
 
-    // 2. Manejar Envío
-    loginForm.addEventListener('submit', (e) => {
+    // Cambiamos a ASYNC para poder usar await con el servidor
+    loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const userInp = document.getElementById('userInput');
         const passInp = document.getElementById('passInput');
@@ -28,54 +27,65 @@ document.addEventListener('DOMContentLoaded', () => {
         const userVal = userInp.value.trim();
         const passVal = passInp.value.trim();
         const displayVal = nameInp.value.trim();
-        
-        let users = JSON.parse(localStorage.getItem('registeredUsers')) || [];
 
-        if (isRegisterMode) {
-            // REGISTRO
-            if (!userVal) return showError("ERROR: PROXY_ID_REQUIRED", userInp);
-            if (!passVal) return showError("ERROR: PASS_KEY_REQUIRED", passInp);
-            if (users.find(u => u.username.toLowerCase() === userVal.toLowerCase())) {
-                return showError("ERROR: ID_ALREADY_EXISTS", userInp);
-            }
+        try {
+            // 1. Siempre obtenemos los usuarios actualizados del servidor
+            const res = await fetch('http://localhost:3000/api/users');
+            const users = await res.json();
 
-            users.push({ username: userVal, password: passVal, displayName: displayVal || userVal });
-            localStorage.setItem('registeredUsers', JSON.stringify(users));
-            showSystemNotification("PROXY REGISTRADO");
-            toggleBtn.click();
-        } else {
-            // LOGIN MEJORADO
-            const foundUser = users.find(u => u.username.toLowerCase() === userVal.toLowerCase());
+            if (isRegisterMode) {
+                // VALIDACIÓN REGISTRO
+                if (!userVal) return showError("ERROR: PROXY_ID_REQUIRED", userInp);
+                if (!passVal) return showError("ERROR: PASS_KEY_REQUIRED", passInp);
+                if (users.find(u => u.username.toLowerCase() === userVal.toLowerCase())) {
+                    return showError("ERROR: ID_ALREADY_EXISTS", userInp);
+                }
 
-            if (!foundUser) {
-                showError("ERROR: PROXY_ID_NOT_FOUND", userInp);
-            } else if (foundUser.password !== passVal) {
-                showError("ERROR: INVALID_PASS_KEY", passInp);
+                const newUser = { username: userVal, password: passVal, displayName: displayVal || userVal };
+
+                // 2. ENVIAR AL SERVIDOR
+                const saveRes = await fetch('http://localhost:3000/api/users', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(newUser)
+                });
+
+                if (saveRes.ok) {
+                    showSystemNotification("PROXY REGISTRADO EN DATABASE");
+                    toggleBtn.click();
+                }
+
             } else {
-                startLoginSequence(foundUser.displayName);
+                // LOGIN
+                const foundUser = users.find(u => u.username.toLowerCase() === userVal.toLowerCase());
+
+                if (!foundUser) {
+                    showError("ERROR: PROXY_ID_NOT_FOUND", userInp);
+                } else if (foundUser.password !== passVal) {
+                    showError("ERROR: INVALID_PASS_KEY", passInp);
+                } else {
+                    startLoginSequence(foundUser.displayName);
+                }
             }
+        } catch (err) {
+            showError("ERROR: SERVER_OFFLINE", userInp);
         }
     });
 
+    // --- FUNCIONES AUXILIARES ---
     function showSystemNotification(message) {
-    const noti = document.getElementById('system-notification');
-    const notiText = document.getElementById('noti-text');
-    
-    notiText.innerText = message;
-    noti.classList.remove('notification-hidden');
-    
-    // Desvanecer después de 3 segundos
-    setTimeout(() => {
-        noti.classList.add('notification-hidden');
-    }, 3000);
+        const noti = document.getElementById('system-notification');
+        const notiText = document.getElementById('noti-text');
+        notiText.innerText = message;
+        noti.classList.remove('notification-hidden');
+        setTimeout(() => noti.classList.add('notification-hidden'), 3000);
     }
 
     function showError(msg, input) {
         resetErrors();
-        const consoleErr = document.getElementById('error-console');
         document.getElementById('error-text').innerText = msg;
         input.classList.add('invalid');
-        consoleErr.style.display = 'block';
+        document.getElementById('error-console').style.display = 'block';
         input.focus();
     }
 
@@ -87,15 +97,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function startLoginSequence(name) {
         submitBtn.innerText = "INITIALIZING...";
         card.classList.add('collapsed');
-
         setTimeout(() => {
             card.style.display = 'none';
             document.getElementById('connecting-screen').style.display = 'block';
-
             setTimeout(() => {
                 document.getElementById('connecting-screen').style.display = 'none';
-                
-                // Rellenamos el perfil que ya existe en el HTML
                 document.getElementById('p-name').innerText = `PROXY_DOSSIER: ${name.toUpperCase()}`;
                 document.getElementById('profile-view').style.display = 'flex';
             }, 2000);
