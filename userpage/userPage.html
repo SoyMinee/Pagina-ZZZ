@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>INTER-KNOT // ACCESS TERMINAL</title>
+    <link rel="icon" href="../media/logo.png">
+    <link rel="stylesheet" href="../style.css"> 
+    <link rel="stylesheet" href="userPage.css">
+</head>
+<body>
+    <div class="crt-overlay"></div>
+    <div id="system-notification" class="notification-hidden">
+        <div class="noti-border"></div>
+            <div class="noti-content">
+                <span class="noti-tag">[ SYSTEM_MSG ]</span>
+                <span id="noti-text">REGISTRO_CORRECTO</span>
+            </div>
+    </div>
+
+    <div class="login-wrapper">
+        <div id="connecting-screen" style="display: none;">
+            <div class="connecting-text">Connecting...</div>
+            <div class="loading-bar-mini"></div>
+        </div>
+
+        <div class="login-card" id="mainCard">
+            <div class="login-header">
+                <h1 id="auth-title">USER_AUTH</h1>
+                <p id="auth-subtitle" style="font-size: 0.7rem; color: #666;">LOGIN_REQUIRED</p>
+            </div>
+
+            <form id="loginForm" novalidate>
+                <div class="input-group">
+                    <label>Proxy_ID</label>
+                    <input type="text" id="userInput" placeholder="Introducir ID de usuario...">
+                </div>
+
+                <div class="input-group" id="nameGroup" style="display: none;">
+                    <label>Display_Name</label>
+                    <input type="text" id="nameInput" placeholder="Nombre que se mostrará...">
+                </div>
+
+                <div class="input-group">
+                    <label>Pass_Key</label>
+                    <input type="password" id="passInput" placeholder="••••••••">
+                </div>
+
+                <div id="error-console">
+                    <div class="error-header"><span>[ SYSTEM_FAILURE ]</span></div>
+                    <div id="error-text"></div>
+                </div>
+
+                <div class="login-footer">
+                    <button type="submit" id="submitBtn" class="submit-btn">Initialize_Session</button>
+                    <button type="button" id="toggleAuth" class="return-link" style="background:none; border:none; cursor:pointer; width:100%;">
+                        [ NEW_PROXY? REGISTER_HERE ]
+                    </button>
+                    <a href="../index.html" class="return-link">[ RETURN_TO_DATABASE ]</a>
+                </div>
+            </form>
+        </div>
+
+        <div id="profile-view" style="display: none;">
+            <div class="profile-avatar">
+                <img src="../media/logo.png" alt="Avatar" id="p-avatar">
+            </div>
+            <div class="profile-info">
+                <h2 id="p-name">PROXY_DOSSIER: NULL</h2>
+                <div class="stat-row">
+                    <span>RANK:</span>
+                    <span class="stat-value">LEGENDARY</span>
+                </div>
+                <div class="stat-row">
+                    <span>STATUS:</span>
+                    <span class="stat-value" style="color: var(--accent);">AUTHORIZED</span>
+                </div>
+                <div class="stat-row">
+                    <span>CONNECTION:</span>
+                    <span class="stat-value">SECURE_TUNNEL</span>
+                </div>
+                <button onclick="location.reload()" class="submit-btn" style="margin-top:20px; padding:10px; width: auto;">
+                    LOGOUT_SYSTEM
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="userPage.js"></script>
+</body>
+</html>

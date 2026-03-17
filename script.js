@@ -1,3 +1,4 @@
+
 const proxies = [
     { name: "ANBY DEMARA",  role: "STUNNER", team:[32,1,24,8],sets:[17,19],skillOrder:['L','H','D','B'], color: "#bce146", desc: "Soldado táctico de las Liebres Astutas. Su estilo es eficiente y pragmático.", full: "media/anby_full.png", thumb: "media/anby_thumb.png" },
     { name: "NICOLE DEMARA",role: "SUPPORT", team:[32,1,24,8],sets:[18,20],skillOrder:[], color: "#fe407f", desc: "Fundadora de las Liebres Astutas. Su astucia supera a la de cualquier liebre.", full: "media/nicole_full.png", thumb: "media/nicole_thumb.png" },
@@ -99,6 +100,12 @@ const theO = document.getElementById('theO');
 const fadeTexts = document.querySelectorAll('.fade-text');
 const uiLayer = document.getElementById('uiLayer');
 const mainImg = document.getElementById('mainCharImg');
+
+document.querySelector('.login-btn').addEventListener('click', () => {
+    window.location.href = 'userpage/userPage.html';
+});
+
+
 
 window.addEventListener('scroll', () => {
     const vh = window.innerHeight;
