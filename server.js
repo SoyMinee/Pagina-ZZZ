@@ -41,4 +41,23 @@ app.post('/api/users', (req, res) => {
     }
 });
 
+// --- CONFIGURACIÓN DE DISCOS ---
+// Asegúrate de que el nombre del archivo sea EXACTAMENTE el mismo que tienes en la carpeta
+const PATH_DISCS = path.join(__dirname, 'database', 'discsinfo.json');
+
+app.get('/api/discs', (req, res) => {
+    try {
+        if (!fs.existsSync(PATH_DISCS)) {
+            console.error("ARCHIVO NO ENCONTRADO EN:", PATH_DISCS);
+            return res.status(404).json({ error: "Archivo discsInfo.json no existe" });
+        }
+        const data = fs.readFileSync(PATH_DISCS, 'utf8');
+        // Usamos JSON.parse directamente sobre la lectura limpia
+        res.json(JSON.parse(data));
+    } catch (error) {
+        console.error("ERROR DE FORMATO O LECTURA:", error);
+        res.status(500).json({ error: "Error al procesar JSON de discos" });
+    }
+});
+
 app.listen(3000, () => console.log("Servidor ZZZ activo en http://localhost:3000"));
