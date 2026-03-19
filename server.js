@@ -41,6 +41,44 @@ app.post('/api/users', (req, res) => {
     }
 });
 
+app.post('/api/users/update-avatar', (req, res) => {
+    const { username, newThumb } = req.body;
+    try {
+        const data = fs.readFileSync(PATH_USERDATA, 'utf8');
+        let usuarios = JSON.parse(data);
+
+        // Buscamos al usuario y actualizamos su foto
+        usuarios = usuarios.map(u => {
+            if (u.username.toLowerCase() === username.toLowerCase()) {
+                return { ...u, thumb: newThumb };
+            }
+            return u;
+        });
+
+        fs.writeFileSync(PATH_USERDATA, JSON.stringify(usuarios, null, 2));
+        res.send({ status: "success", message: "Avatar actualizado" });
+    } catch (error) {
+        res.status(500).send({ status: "error", message: "Error al guardar" });
+    }
+});
+
+app.post('/api/users/update', (req, res) => {
+    const { username, updates } = req.body;
+    const data = JSON.parse(fs.readFileSync(PATH_USERDATA, 'utf8'));
+
+    const userIndex = data.findIndex(u => u.username.toLowerCase() === username.toLowerCase());
+
+    if (userIndex !== -1) {
+        // Mezclamos los datos viejos con los nuevos (thumb, full, color)
+        data[userIndex] = { ...data[userIndex], ...updates };
+        
+        fs.writeFileSync(PATH_USERDATA, JSON.stringify(data, null, 2));
+        return res.json({ status: "success" });
+    }
+
+    res.status(404).json({ status: "error", message: "Usuario no encontrado" });
+});
+
 // --- CONFIGURACIÓN DE DISCOS ---
 // Asegúrate de que el nombre del archivo sea EXACTAMENTE el mismo que tienes en la carpeta
 const PATH_DISCS = path.join(__dirname, 'database', 'discsinfo.json');

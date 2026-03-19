@@ -2,11 +2,9 @@
   {
     "username": "mine",
     "password": "1234",
-    "displayName": "mine"
-  },
-  {
-    "username": "Nico",
-    "password": "12345",
-    "displayName": "Yo"
+    "displayName": "Mine",
+    "thumb": "media/burnice_thumb.png",
+    "full": "media/burnice_full.png",
+    "color": "#ff6831"
   }
 ]

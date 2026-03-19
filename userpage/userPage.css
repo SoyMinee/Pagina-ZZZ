@@ -173,3 +173,51 @@ input.invalid { border-color: #ff4444 !important; background: rgba(255, 0, 0, 0.
     font-size: 0.8rem;
     letter-spacing: 1px;
 }
+
+/* Ventana del Modal pequeña y centrada */
+.modal-content {
+    background: #111;
+    border: 2px solid var(--accent);
+    padding: 20px;
+    width: 350px; /* Ancho fijo para que sea pequeño */
+    max-height: 450px;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0,0,0,0.8);
+}
+
+/* Rejilla de personajes */
+.agents-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas fijas */
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.grid-item {
+    cursor: pointer;
+    border: 1px solid #333;
+    padding: 5px;
+    transition: 0.2s;
+    background: #1a1a1a;
+}
+
+.grid-item:hover {
+    border-color: var(--accent);
+    background: #222;
+}
+
+.grid-item img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    display: block;
+}
+
+.grid-item-name {
+    font-size: 10px;
+    text-align: center;
+    color: #888;
+    margin-top: 4px;
+    text-transform: uppercase;
+}

@@ -61,8 +61,9 @@
         </div>
 
         <div id="profile-view" style="display: none;">
-            <div class="profile-avatar">
-                <img src="../media/logo.png" alt="Avatar" id="p-avatar">
+            <div class="avatar-container" onclick="openAvatarSelector()">
+                <img id="p-img" src="../media/anby_thumb.png" alt="Proxy Avatar">
+                <div class="avatar-overlay">CHANGE_IMAGE</div>
             </div>
             <div class="profile-info">
                 <h2 id="p-name">PROXY_DOSSIER: NULL</h2>
@@ -83,6 +84,20 @@
                 </button>
             </div>
         </div>
+        <div id="dataBankModal" class="modal-overlay" style="display: none;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 style="font-size: 14px; color: var(--accent);">AGENT_SELECTION</h2>
+                    </div>
+                    
+                    <div id="agentsGrid" class="agents-grid">
+                        </div>
+
+                    <button onclick="window.closeFullList()" class="toggle-link" style="margin-top: 15px; width: 100%;">
+                        [ CANCEL_SELECTION ]
+                    </button>
+                </div>
+            </div>
     </div>
 
     <script src="userPage.js"></script>
