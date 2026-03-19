@@ -221,3 +221,33 @@ input.invalid { border-color: #ff4444 !important; background: rgba(255, 0, 0, 0.
     margin-top: 4px;
     text-transform: uppercase;
 }
+
+#bio-container {
+    margin-top: 5px;
+    min-height: 40px;
+}
+
+#p-bio {
+    font-size: 13px;
+    color: #aaa;
+    cursor: pointer;
+    border-left: 2px solid var(--accent);
+    padding-left: 10px;
+    font-style: italic;
+}
+
+#p-bio:hover {
+    color: var(--accent);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+#bio-input {
+    width: 100%;
+    background: #000;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    font-family: 'Courier New', Courier, monospace;
+    padding: 5px;
+    resize: none;
+    outline: none;
+}

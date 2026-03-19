@@ -90,6 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function startLoginSequence(user) {
+        // Dentro de startLoginSequence, añade esta línea:
+        document.getElementById('p-bio').innerText = user.bio || "CLICK_TO_IDENTIFY_PROXY...";
         submitBtn.innerText = "INITIALIZING...";
         card.classList.add('collapsed');
         setTimeout(() => {
@@ -195,5 +197,48 @@ window.updateAvatar = async function(thumbPath, fullPath, accentColor) {
         }
     } catch (error) {
         console.error("Error al conectar con el servidor:", error);
+    }
+};
+
+window.editBio = function() {
+    const p = document.getElementById('p-bio');
+    const input = document.getElementById('bio-input');
+    
+    input.value = p.innerText === "CLICK_TO_IDENTIFY_PROXY..." ? "" : p.innerText;
+    p.style.display = 'none';
+    input.style.display = 'block';
+    input.focus();
+};
+
+window.saveBio = async function() {
+    const p = document.getElementById('p-bio');
+    const input = document.getElementById('bio-input');
+    const newBio = input.value.trim() || "CLICK_TO_IDENTIFY_PROXY...";
+
+    // 1. Cambiamos la interfaz rápido
+    p.innerText = newBio;
+    p.style.display = 'block';
+    input.style.display = 'none';
+
+    // 2. Si el texto no cambió, no molestamos al servidor
+    if (currentUser.bio === newBio) return;
+
+    // 3. Guardamos en el servidor usando la ruta /update que ya tenemos
+    try {
+        const response = await fetch('http://localhost:3000/api/users/update', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                username: currentUser.username,
+                updates: { bio: newBio }
+            })
+        });
+
+        if (response.ok) {
+            currentUser.bio = newBio;
+            window.showSystemNotification("BIO_UPDATED_IN_DATABASE");
+        }
+    } catch (error) {
+        console.error("Error al guardar bio:", error);
     }
 };
