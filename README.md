@@ -9,12 +9,12 @@ Tambien luego crear la pestaña de “Ambientacion” pero adaptado a la guia: q
 FUNCIONALIDADES #################
 
     1. Expositor de personajes                                     --- Hecho
-    2. Guía de cada personajes                                     ---
-    3. Implementacion de BBDD para usuarios y control de datos     ---
-    4. Pestaña de introducción al juego, quiero probar a usar 3D   ---
-    5. Registro de usuarios con perfil personalizable              ---
-    6. Animaciones estilizadas con la tematica del juego           ---
-    7. Responsibidad y adaptación a móviles                        ---
+    2. Guía de cada personajes                                     --- 2%
+    3. Implementacion de BBDD para usuarios y control de datos     --- Hecho
+    4. Pestaña de introducción al juego, quiero probar a usar 3D   --- 0%
+    5. Registro de usuarios con perfil personalizable              --- Hecho
+    6. Animaciones estilizadas con la tematica del juego           --- 80%
+    7. Responsibidad y adaptación a móviles                        --- 0%
 
 
 
