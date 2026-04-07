@@ -6,16 +6,6 @@ De la pagina lo que quiero llevar seria el apartado de personajes con ese select
 
 Tambien luego crear la pestaña de “Ambientacion” pero adaptado a la guia: que muestren los conjuntos equipables, armas y lista de personajes por ejemplo
 
-FUNCIONALIDADES #################
-
-    1. Expositor de personajes                                     --- Hecho
-    2. Guía de cada personajes                                     ---
-    3. Implementacion de BBDD para usuarios y control de datos     ---
-    4. Pestaña de introducción al juego, quiero probar a usar 3D   ---
-    5. Registro de usuarios con perfil personalizable              ---
-    6. Animaciones estilizadas con la tematica del juego           ---
-    7. Responsibidad y adaptación a móviles                        ---
-
 
 
 SERVIDOR DE NODE.JS ################
