@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "username": "hola",
+    "password": "1234",
+    "displayName": "123",
+    "thumb": "media/miyabi_thumb.png",
+    "full": "media/miyabi_full.png",
+    "color": "#b4ebff",
+    "bio": "No soy nadie"
+  }
+]

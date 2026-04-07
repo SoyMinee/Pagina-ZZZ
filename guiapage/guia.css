@@ -1,0 +1,66 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /* Quitamos el height: 100% del body para que pueda crecer */
+    background-color: #000;
+    overflow-x: hidden;
+    overflow-y: scroll; /* Forzamos la aparición de la barra */
+}
+
+#scroll-height {
+    position: relative;
+    width: 1px;       /* Casi invisible */
+    height: 500vh;    /* 5 veces el alto de la pantalla */
+    z-index: 1;       /* Por debajo del viewport */
+    pointer-events: none; /* Para que no interfiera */
+}
+
+#camera-viewport {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    /* IMPORTANTE: Esto permite que el scroll "atraviese" la imagen 
+       y llegue al body */
+    pointer-events: none; 
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-origin: 54.8% 45.2%; 
+    will-change: transform;
+}
+
+/* 3. La imagen de fondo */
+.main-img {
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover; /* Asegura que cubra toda la pantalla sin deformarse */
+}
+
+/* 4. Efecto de Balanceo / Respiración "Humana" (Muy Sutil y Natural) */
+.camera-sway {
+    /* Aumentamos la duración a 16s para que sea lento y suave */
+    animation: naturalBreath 12s ease-in-out infinite;
+}
+
+@keyframes naturalBreath {
+    0%, 100% { 
+        transform: scale(1.11) translate(0px, 0px) rotate(0deg); 
+    }
+    20% { 
+        transform: scale(1.121) translate(1px, -1px) rotate(0.02deg); 
+    }
+    40% { 
+        transform: scale(1.12) translate(-1px, 0px) rotate(0deg); 
+    }
+    60% { 
+        transform: scale(1.122) translate(-2px, 2px) rotate(-0.03deg); 
+    }
+    80% { 
+        transform: scale(1.11) translate(0px, 1px) rotate(-0.01deg); 
+    }
+}
