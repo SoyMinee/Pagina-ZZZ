@@ -254,6 +254,58 @@ body {
 }
 
 /* 9. BOTONES DE ACCIÓN */
+/* --- ESTILO PARA EL NUEVO BOTÓN Y TOOLTIP --- */
+.container-guia {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 15px; /* Separación del botón login */
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.guia-btn {
+    background: rgba(188, 225, 70, 0.1) !important; /* Usando tu --accent con opacidad */
+    border: 1px solid var(--accent) !important;
+    color: var(--accent) !important;
+    width: 180px !important;
+    font-size: 0.75rem !important;
+    cursor: pointer;
+}
+
+.guia-btn:hover {
+    background: var(--accent) !important;
+    color: #000 !important;
+    box-shadow: 0 0 15px var(--accent);
+}
+
+/* El recuadro de texto (Tooltip) */
+.tooltip-guia {
+    background: #fff;
+    color: #000;
+    padding: 4px 10px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    font-weight: bold;
+    margin-bottom: 6px;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    text-transform: uppercase;
+}
+
+.container-guia:hover .tooltip-guia {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Clase para ocultar el botón al scrollear */
+.guia-hidden {
+    opacity: 0;
+    transform: translateX(30px);
+    pointer-events: none;
+}
+
 .action-buttons {
     margin-top: 30px;
     display: flex;

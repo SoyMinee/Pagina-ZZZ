@@ -85,6 +85,7 @@ document.querySelector('.login-btn').addEventListener('click', () => {
 
 // --- LÓGICA DE SCROLL (Mantenida exactamente igual) ---
 window.addEventListener('scroll', () => {
+    const guiaWrapper = document.getElementById('guiaWrapper');
     const vh = window.innerHeight;
     const progress = Math.min(window.scrollY / (vh * 1.5), 1);
     const scrollPos = window.scrollY;
@@ -92,10 +93,12 @@ window.addEventListener('scroll', () => {
     
     if (scrollPos > 50) {
         scrollHint.style.opacity = '0';
+        guiaWrapper.classList.add('guia-hidden');
         scrollHint.style.pointerEvents = 'none';
     } else {
         scrollHint.style.opacity = '1';
         scrollHint.style.pointerEvents = 'all';
+        guiaWrapper.classList.remove('guia-hidden');
     }
     
     const scale = 1 + (progress * 70);
