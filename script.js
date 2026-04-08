@@ -126,6 +126,17 @@ window.addEventListener('scroll', () => {
         uiLayer.style.pointerEvents = "none";
         mainImg.style.transform = "translateX(-110%)";
     }
+    // Detectamos si estamos en la vista móvil que definiste en tu CSS
+    const isMobile = window.matchMedia("(max-width: 850px) or (orientation: portrait)").matches;
+
+    if (isMobile) {
+        // LÓGICA PARA MÓVIL (Título apilado)
+        const scale = 1 + (progress * 35); // Escalado menor para que no se salga de la pantalla
+        const xMoveMobile = progress * 10; // Ajusta este valor para moverlo a los lados
+        const yMoveMobile = progress * -80; // Como está apilado, igual necesitas que suba un poco en 'vh'
+        
+        theO.style.transform = `translate(${xMoveMobile}vw, ${yMoveMobile}vh) scale(${scale})`;
+    }
 });
 
 // --- TUS FUNCIONES (Ahora usan el array 'proxies' cargado) ---
@@ -142,6 +153,7 @@ function updateMarquee(name) {
         <div class="marquee-line reverse">${content}</div>
         <div class="marquee-line">${content}</div>
     `;
+    
 }
 
 function changeChar(dir) {
@@ -149,7 +161,14 @@ function changeChar(dir) {
     if(document.getElementById('infoBox').classList.contains('expanded')) {
         backToSummary();
     }
-    mainImg.style.transform = "translateX(-110%)";
+    const isMobile = window.matchMedia("(max-width: 850px) or (orientation: portrait)").matches;
+
+    if (isMobile) {
+        mainImg.style.transform = "translateY(-110%)";
+    } else {
+        mainImg.style.transform = "translateX(-110%)";
+    }
+    
     setTimeout(() => {
         currentIdx = (currentIdx + dir + proxies.length) % proxies.length;
         const data = proxies[currentIdx];
@@ -162,7 +181,11 @@ function changeChar(dir) {
         const nextIdx = (currentIdx + 1) % proxies.length;
         document.getElementById('thumbPrev').src = proxies[prevIdx].thumb;
         document.getElementById('thumbNext').src = proxies[nextIdx].thumb;
-        mainImg.style.transform = "translateX(0)";
+        if (isMobile) {
+        mainImg.style.transform = "translateY(0%)";
+        } else {
+            mainImg.style.transform = "translateX(0)";
+        } 
     }, 300);
 }
 

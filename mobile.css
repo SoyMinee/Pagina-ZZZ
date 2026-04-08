@@ -1,0 +1,417 @@
+/* ==========================================================================
+   MOBILE.CSS - ESTILOS EXCLUSIVOS PARA MÓVIL
+   ========================================================================== */
+
+/* ---------------------------------------------------
+   OBJETIVO 1: TÍTULO "ZENLESS LOGIC" APILADO
+--------------------------------------------------- */
+.hero-container {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.main-title {
+    display: block !important; /* Quitamos el flex para que el texto pueda saltar de línea */
+    font-size: 18vw !important; /* Tamaño gigante que se adapta al ancho del móvil */
+    line-height: 0.8 !important; /* Junta las palabras de arriba y abajo */
+    text-align: center !important;
+    
+    /* EL TRUCO: Al darle márgenes laterales grandes, "ZENLESS LOGIC" no cabe en una sola línea, 
+       así que el navegador rompe la frase justo por el único espacio en blanco que tiene */
+    padding: 0 15% !important; 
+}
+
+/* ---------------------------------------------------
+   OBJETIVO 2: MENÚ HAMBURGUESA Y BOTONES OCULTOS
+--------------------------------------------------- */
+
+/* 1. Diseñamos el botón redondo con tres rayas */
+#mobileMenuBtn {
+    display: flex !important; /* Lo hacemos visible (en PC estaba oculto) */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px; /* Separación entre las rayas */
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid var(--accent);
+    border-radius: 50%; /* Lo hace redondito */
+    z-index: 999; /* Siempre por encima de todo */
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(188, 225, 70, 0.2);
+}
+
+/* 2. Las tres rayas verdes de dentro del botón */
+#mobileMenuBtn div {
+    width: 20px;
+    height: 2px;
+    background-color: var(--accent);
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+/* 3. Ocultamos los botones de Login y Guía originales para que no molesten en pantalla */
+.side-nav {
+    display: none !important; /* Más adelante con JS haremos que aparezcan al pulsar el botón redondo */
+}
+
+/* ---------------------------------------------------
+   OBJETIVO 3: PERSONAJE ARRIBA, INTERFAZ A MITAD DE PANTALLA
+--------------------------------------------------- */
+
+/* 1. Cambiamos la dirección de la interfaz de horizontal a vertical */
+.character-ui {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+}
+
+/* 2. La imagen del personaje (Mitad Superior) */
+.char-display {
+    width: 100% !important;
+    flex: 1 !important; /* Toma todo el espacio disponible arriba */
+    height: 50vh !important; /* Le damos aproximadamente la mitad de la pantalla */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-end !important; /* Mantiene al personaje anclado abajo */
+    order: 1 !important; /* Obligamos a que vaya primero (arriba) */
+}
+
+/* Ajustes para que la foto no se corte ni se deforme en móvil */
+#mainCharImg {
+    width: auto !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    padding-top: 100px;
+    object-fit: contain !important; /* Clave para que no se ampute ninguna parte */
+    
+    /* Cambiamos el degradado: en lugar de difuminarse hacia un lado, 
+       se difumina hacia abajo para fusionarse con la caja de texto */
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%) !important;
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%) !important;
+}
+
+/* 3. La caja de información (Mitad Inferior) */
+.info-box {
+    width: 100% !important; /* Ocupa todo el ancho del móvil */
+    min-width: 0 !important; /* Quitamos restricciones del PC */
+    flex: 1 !important;
+    height: 50vh !important;
+    order: 2 !important; /* Obligamos a que vaya segundo (abajo) */
+    
+    /* El degradado del fondo ahora sube desde abajo */
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 80%, rgba(0,0,0,0)) !important;
+    
+    /* Ajustamos el padding para la pantalla pequeña */
+    padding: 100px 20px 30px 20px !important; 
+    text-align: center !important; /* Centramos el texto para que quede como una App */
+    
+    /* Muy importante: permitimos hacer scroll a los textos si no caben en la pantalla */
+    overflow-y: auto !important; 
+    overflow-x: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+}
+
+/* ---------------------------------------------------
+   OBJETIVO 3 (Continuación): INTERFAZ INTERIOR DEL INFO-BOX
+--------------------------------------------------- */
+
+/* 1. Ajuste del Título (Nombre del Personaje) y Descripción */
+.info-box h2 {
+    font-size: 2.2rem !important; /* Lo hacemos un poco más pequeño para que no desborde en pantallas estrechas */
+    text-align: center !important;
+    padding-top: 0px !important;
+    margin-bottom: 10px !important;
+    line-height: 1.1 !important;
+}
+
+#charDesc {
+    text-align: center !important;
+    font-size: 0.9rem !important;
+    margin-bottom: 20px !important;
+    padding: 0 10px !important;
+}
+
+/* 2. Navegación de Personajes (Avatares previos y siguientes) */
+.thumbnails-nav {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    justify-content: center !important; /* Centramos los avatares */
+    gap: 20px !important;
+    margin-bottom: 25px !important;
+    width: 100% !important;
+}
+
+.nav-item {
+    align-items: center !important;
+    text-align: center !important;
+}
+
+/* 3. Botones de Acción (SELECT_AGENT y DATA_BANK) */
+.action-buttons {
+    display: flex !important;
+    flex-direction: line !important; /* Ponemos un botón encima del otro en vez de al lado */
+    align-items: center !important;
+    gap: 15px !important;
+    width: 100% !important;
+}
+
+.action-buttons .btn-zzz {
+    width: 85% !important; /* Botones anchos y fáciles de pulsar en móvil */
+    justify-content: center !important; /* Centra el texto y el icono dentro del botón */
+    padding: 15px !important; /* Un poco más altos para el dedo */
+}
+
+/* 4. Vista de Detalles (Sets, Roles y Equipos) */
+.details-grid {
+    display: flex !important;
+    flex-direction: column !important; /* Pasa de 2 columnas (PC) a 1 sola columna (Móvil) */
+    gap: 30px !important;
+    align-items: center !important;
+}
+
+.details-grid h3 {
+    text-align: center !important;
+    font-size: 1.2rem !important;
+}
+
+/* Centramos los iconos de habilidades y avatares de equipo */
+.skills-priority, 
+.team-row,
+.sets-container {
+    justify-content: center !important;
+}
+
+.role-section {
+    text-align: center !important;
+    margin: 15px 0 !important;
+}
+
+/* ---------------------------------------------------
+   OBJETIVO 3 (Continuación): NAVEGACIÓN Y FONDO MARQUEE
+--------------------------------------------------- */
+
+/* 1. Ajuste de las miniaturas de navegación para que no desborden */
+.nav-item img { 
+    width: 35vw !important; /* En lugar de 161px, ocupan un 35% del ancho del móvil */
+    max-width: 140px !important; /* Límite máximo para que no sean gigantes en tablets */
+    height: auto !important; /* Mantiene la proporción original */
+    border-width: 1px !important; /* Borde un poco más fino para móvil */
+}
+
+/* Reducimos el tamaño del texto "PREV_FILE" / "NEXT_FILE" */
+.nav-item span {
+    font-size: 0.7rem !important;
+    display: block !important;
+    margin-bottom: 5px !important;
+}
+
+/* 2. Ajuste del fondo animado (Marquee) */
+.marquee-line {
+    font-size: 10vh !important; /* Reducimos de 15vh a 10vh para que quede más elegante en móvil */
+    gap: 20px !important; /* Menos separación entre palabras */
+}
+
+/* Evitamos que el hover escale demasiado y se salga de la pantalla al tocarlo */
+.nav-item:hover img { 
+    transform: scale(1.02) !important;
+}
+
+/* ---------------------------------------------------
+   OBJETIVOS 2 Y 3: BOTONES INTERACTIVOS Y MODAL
+--------------------------------------------------- */
+
+/* 1. Ajuste de los botones .btn-zzz para pantallas táctiles */
+.btn-zzz {
+    /* Evitamos que el botón salte hacia un lado al tocarlo con el dedo */
+    transform: none !important; 
+    text-align: center !important; /* Centramos el texto dentro del botón diagonal */
+}
+
+.btn-zzz:hover {
+    transform: none !important; /* Anulamos el desplazamiento lateral del PC */
+    /* Mantenemos el cambio de color porque queda bonito como feedback táctil */
+}
+
+/* 2. Preparando el Menú Desplegable (Hamburguesa) */
+/* Esta clase se activará con JavaScript cuando toques el botón redondo */
+.side-nav.active {
+    display: flex !important;
+    flex-direction: column !important;
+    position: fixed !important;
+    top: 85px !important; /* Aparece justo debajo del botón redondo */
+    right: 25px !important;
+    background: rgba(10, 10, 10, 0.95);
+    padding: 20px !important;
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    z-index: 998;
+    align-items: center !important;
+    gap: 15px !important;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.8);
+}
+
+.side-nav .container-guia {
+    margin: 0 !important;
+    align-items: center !important;
+}
+
+.side-nav .tooltip-guia {
+    display: none !important; /* En pantallas táctiles los tooltips fallan, es mejor ocultarlo */
+}
+
+.side-nav .btn-zzz {
+    width: 200px !important; /* Unificamos el tamaño de los botones del menú desplegable */
+}
+
+/* 3. Ajuste del Modal de la Base de Datos (DATA BANK) */
+.modal-overlay {
+    padding: 10px !important; /* Reducimos el espacio vacío alrededor en móvil */
+}
+
+.modal-content {
+    width: 100% !important;
+    padding: 15px !important; /* Más espacio interior para el contenido */
+    max-height: 90vh !important; /* Que ocupe casi toda la pantalla de alto */
+    
+    /* Suavizamos los cortes diagonales para que no se coman el contenido en pantallas estrechas */
+    clip-path: polygon(0 0, 95% 0, 100% 2%, 100% 100%, 5% 100%, 0 98%) !important;
+}
+
+.modal-header {
+    flex-direction: column !important; /* Ponemos el título arriba y el botón de cerrar debajo */
+    gap: 15px !important;
+    text-align: center !important;
+    font-size: 0.9rem !important; /* Letra un pelín más pequeña */
+}
+
+/* ---------------------------------------------------
+   OBJETIVOS 2 Y 3 (FINAL): DATA BANK (CUADRÍCULA)
+--------------------------------------------------- */
+
+/* 1. Ajuste de la cuadrícula para garantizar 2 columnas en móvil */
+.agents-grid {
+    grid-template-columns: repeat(2, 1fr) !important; /* Fuerza 2 columnas iguales */
+    gap: 10px !important;
+}
+
+/* 2. Anulamos los efectos hover para pantallas táctiles */
+.grid-item:hover {
+    transform: none !important; /* Evitamos que la foto salte al tocarla */
+}
+
+/* Las fotos siempre a color en móvil para saber a quién vas a elegir */
+.grid-item img {
+    filter: grayscale(0) !important;
+}
+
+/* 3. Nombres siempre visibles en móvil */
+.grid-item-name {
+    transform: translateY(0) !important; /* Lo sacamos de su escondite */
+    background: rgba(0, 0, 0, 0.85) !important; /* Fondo un poco más oscuro para que se lea bien */
+    font-size: 0.75rem !important; /* Letra un poquito más grande */
+    padding: 6px !important;
+}
+
+/* La barra de scroll y las animaciones se heredan perfectas de tu PC, 
+   no hace falta tocar nada más. */
+
+/* ---------------------------------------------------
+   OBJETIVO 3 (FINAL): SUMMARY Y VISTA DE DETALLES
+--------------------------------------------------- */
+
+/* 1. Ajustes del contenedor Summary (Vista Principal) */
+#summaryView {
+    height: auto !important; /* ¡VITAL! Anulamos los 520px fijos del PC para no desbordar */
+    justify-content: flex-start !important; 
+    align-items: center !important; /* Centramos todo el bloque */
+    width: 100% !important;
+}
+
+#summaryView h2 {
+    text-align: center !important; /* Quitamos el text-align: right */
+}
+
+#summaryView p {
+    text-align: center !important;
+    margin: 0 auto 20px auto !important; /* Centramos el párrafo anulando el margin-left: auto */
+    min-height: auto !important; /* El móvil no necesita altura mínima fija aquí */
+    max-width: 95% !important; /* Aprovechamos más el ancho de la pantalla */
+}
+
+/* 2. Comportamiento de la caja al expandirse (Ver Detalles) */
+.info-box.expanded {
+    width: 100% !important; /* En móvil siempre ocupa el 100%, nada del 70% del PC */
+    height: 75vh !important; /* Hacemos que la caja crezca hacia arriba tapando más al personaje para poder leer */
+    background: linear-gradient(to top, rgba(0,0,0,1) 85%, rgba(0,0,0,0.6)) !important;
+    padding: 20px !important;
+    text-align: center !important; /* Centramos el texto de los detalles */
+}
+
+/* 3. Animación de los detalles adaptada a móvil */
+#detailsView {
+    margin-bottom: 200px;
+    transform: translateY(20px) !important; /* Cambiamos el desplazamiento lateral por uno vertical (desde abajo) */
+}
+
+.info-box.expanded #detailsView {
+    transform: translateY(0) !important;
+}
+/* =========================================
+   ADAPTACIONES PARA MOBILE (details-panel)
+   ========================================= */
+
+/* 1. Ajuste del grid: Pasamos de 2 columnas a 1 sola columna apilada */
+.details-grid {
+    grid-template-columns: 1fr; 
+    gap: 20px; 
+    /* Permitimos scroll vertical por si el contenido apilado es muy largo */
+    overflow-y: auto; 
+    overflow-x: hidden;
+}
+
+/* 2. Ajuste de la caja expandida: Ocupa el 100% en lugar del 75% */
+.info-box.expanded {
+    width: 100%; 
+    padding-right: 0; 
+    /* Cambiamos el degradado lateral por uno vertical para móvil */
+    background: linear-gradient(to top, rgba(0,0,0,0.98) 80%, rgba(0,0,0,0.6) 95%, transparent);
+}
+
+/* 3. Equipos: Centramos las filas y permitimos salto de línea */
+.teams-container {
+    align-items: center; /* Centra el bloque de equipos */
+}
+
+.team-row {
+    justify-content: center; 
+    flex-wrap: wrap; /* Si el móvil es muuuuy estrecho, los íconos no se cortarán, bajarán de línea */
+    width: 100%; 
+    max-width: 350px; /* Mantiene la caja del equipo compacta aunque la pantalla gire */
+}
+
+/* Las miniaturas (.team-thumb) heredan tu tamaño original de 75x42px del style.css, no hace falta repetirlo */
+
+/* 4. Sets Recomendados: Los centramos en la pantalla */
+.sets-container {
+    justify-content: center; 
+}
+
+/* 5. Títulos: Consolidamos tu código duplicado y permitimos salto de línea */
+.details-grid h3 {
+    font-size: 0.75rem; 
+    white-space: normal; /* En móvil es más seguro permitir que el texto baje si no cabe */
+    /* El border-left, color, y letter-spacing se heredan automáticamente de tu style.css */
+}

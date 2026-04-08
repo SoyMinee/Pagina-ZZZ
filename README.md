@@ -15,8 +15,8 @@ PROGRESO DE LA PÁGINA ##############
         -> Accesible desde la Landing Page
         -> Implementación de videos, capas y animaciones.
     5. Registro de usuarios con perfil personalizable              --- Hecho
-    6. Animaciones estilizadas con la tematica del juego           --- 95%
-    7. Responsibidad y adaptación a móviles                        --- 0%
+    6. Animaciones estilizadas con la tematica del juego           --- 98%
+    7. Responsibidad y adaptación a móviles                        --- 40%
 
 
 SERVIDOR DE NODE.JS ################

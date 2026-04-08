@@ -227,6 +227,7 @@ body {
     user-select: none;
     pointer-events: none;
     white-space: nowrap;
+    padding-bottom: 200px;
     /* Ajustes de sutileza extrema */
     opacity: 0.10; 
     filter: blur(1px); /* Un toque de desenfoque para que no distraiga */
