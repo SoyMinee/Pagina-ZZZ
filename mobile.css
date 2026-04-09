@@ -110,7 +110,7 @@
     order: 2 !important; /* Obligamos a que vaya segundo (abajo) */
     
     /* El degradado del fondo ahora sube desde abajo */
-    background: linear-gradient(to top, rgba(0,0,0,0.95) 80%, rgba(0,0,0,0)) !important;
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 60%, rgba(0,0,0,0) 100%) !important;
     
     /* Ajustamos el padding para la pantalla pequeña */
     padding: 100px 20px 30px 20px !important; 
