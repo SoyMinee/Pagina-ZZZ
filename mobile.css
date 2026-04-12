@@ -80,7 +80,7 @@
 .char-display {
     width: 100% !important;
     flex: 1 !important; /* Toma todo el espacio disponible arriba */
-    height: 50vh !important; /* Le damos aproximadamente la mitad de la pantalla */
+    height: 60vh !important; /* Le damos aproximadamente la mitad de la pantalla */
     display: flex !important;
     justify-content: center !important;
     align-items: flex-end !important; /* Mantiene al personaje anclado abajo */
@@ -92,28 +92,29 @@
     width: auto !important;
     max-width: 100% !important;
     height: 100% !important;
-    padding-top: 100px;
+    padding-top: 200px;
     object-fit: contain !important; /* Clave para que no se ampute ninguna parte */
     
     /* Cambiamos el degradado: en lugar de difuminarse hacia un lado, 
        se difumina hacia abajo para fusionarse con la caja de texto */
-    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%) !important;
-    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%) !important;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 95%, rgba(0,0,0,0) 100%) !important;
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 95% rgba(0,0,0,0) 100%) !important;
 }
+
 
 /* 3. La caja de información (Mitad Inferior) */
 .info-box {
     width: 100% !important; /* Ocupa todo el ancho del móvil */
     min-width: 0 !important; /* Quitamos restricciones del PC */
     flex: 1 !important;
-    height: 50vh !important;
+    height: 30vh !important;
     order: 2 !important; /* Obligamos a que vaya segundo (abajo) */
     
     /* El degradado del fondo ahora sube desde abajo */
     background: linear-gradient(to top, rgba(0,0,0,0.95) 60%, rgba(0,0,0,0) 100%) !important;
     
     /* Ajustamos el padding para la pantalla pequeña */
-    padding: 100px 20px 30px 20px !important; 
+    padding: 10px 20px 30px 20px !important; 
     text-align: center !important; /* Centramos el texto para que quede como una App */
     
     /* Muy importante: permitimos hacer scroll a los textos si no caben en la pantalla */
@@ -219,6 +220,12 @@
 }
 
 /* 2. Ajuste del fondo animado (Marquee) */
+.marquee-bg {
+    padding: 85px !important;
+    z-index: -10 !important;
+    
+
+}
 .marquee-line {
     font-size: 10vh !important; /* Reducimos de 15vh a 10vh para que quede más elegante en móvil */
     gap: 20px !important; /* Menos separación entre palabras */

@@ -132,8 +132,8 @@ window.addEventListener('scroll', () => {
     if (isMobile) {
         // LÓGICA PARA MÓVIL (Título apilado)
         const scale = 1 + (progress * 35); // Escalado menor para que no se salga de la pantalla
-        const xMoveMobile = progress * 10; // Ajusta este valor para moverlo a los lados
-        const yMoveMobile = progress * -80; // Como está apilado, igual necesitas que suba un poco en 'vh'
+        const xMoveMobile = progress * 13; // Ajusta este valor para moverlo a los lados
+        const yMoveMobile = progress * 10; // Como está apilado, igual necesitas que suba un poco en 'vh'
         
         theO.style.transform = `translate(${xMoveMobile}vw, ${yMoveMobile}vh) scale(${scale})`;
     }
@@ -164,7 +164,7 @@ function changeChar(dir) {
     const isMobile = window.matchMedia("(max-width: 850px) or (orientation: portrait)").matches;
 
     if (isMobile) {
-        mainImg.style.transform = "translateY(-110%)";
+        mainImg.style.transform = "translateY(110%)";
     } else {
         mainImg.style.transform = "translateX(-110%)";
     }
