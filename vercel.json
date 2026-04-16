@@ -12,6 +12,22 @@
       "dest": "vercelserver.js"
     },
     {
+      "src": "/(style\\.css|mobile\\.css|script\\.js|styleadaptado\\.css)",
+      "dest": "/$1"
+    },
+    {
+      "src": "/media/(.*)",
+      "dest": "/media/$1"
+    },
+    {
+      "src": "/guiapage/(.*)",
+      "dest": "/guiapage/$1"
+    },
+    {
+      "src": "/userpage/(.*)",
+      "dest": "/userpage/$1"
+    },
+    {
       "handle": "filesystem"
     },
     {
