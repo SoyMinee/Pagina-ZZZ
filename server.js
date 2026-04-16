@@ -98,5 +98,8 @@ app.get('/api/discs', (req, res) => {
     }
 });
 
-app.listen(3000, () => console.log("Servidor ZZZ activo en http://localhost:3000"));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Servidor ZZZ activo en el puerto ${PORT}`);
+});
 
