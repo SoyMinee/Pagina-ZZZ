@@ -7,7 +7,7 @@ let currentIdx = 0;
 // 1. CARGAR PROXIES (Esta funciona bien)
 async function cargarProxies() {
     try {
-        const res = await fetch('http://localhost:3000/api/proxies');
+        const res = await fetch('api/proxies');
         if (!res.ok) throw new Error("Error en servidor al pedir proxies");
         proxies = await res.json();
         console.log("PROXIES: Cargados correctamente (" + proxies.length + ")");
@@ -24,7 +24,7 @@ async function cargarProxies() {
 // 2. CARGAR DISCOS (Separada para que no rompa lo anterior)
 async function cargarDiscos() {
     try {
-        const res = await fetch('http://localhost:3000/api/discs');
+        const res = await fetch('api/discs');
         
         if (!res.ok) {
             console.warn("DISCOS: El servidor respondió con error (404 o 500)");
