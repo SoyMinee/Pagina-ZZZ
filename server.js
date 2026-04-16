@@ -7,6 +7,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Servir archivos estáticos (CSS, JS de cliente, Imágenes)
+app.use(express.static(__dirname));
+
+// Ruta principal para el index.html
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 // Usamos path.join para evitar problemas de carpetas en Windows
 const PATH_USERDATA = path.join(__dirname, 'database', 'userData.json');
 const PATH_PROXIES = path.join(__dirname, 'database', 'proxiesInfo.json');
