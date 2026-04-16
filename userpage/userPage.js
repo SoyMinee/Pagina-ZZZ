@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitBtn = document.getElementById('submitBtn');
     
     // CARGA DE AGENTES: Traer los personajes del servidor al inicio
-    fetch('http://localhost:3000/api/proxies')
+    fetch('api/proxies')
         .then(res => res.json())
         .then(data => { 
             proxies = data; 
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const displayVal = nameInp.value.trim();
 
         try {
-            const res = await fetch('http://localhost:3000/api/users');
+            const res = await fetch('api/users');
             const users = await res.json();
 
             if (isRegisterMode) {
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     color: "#bce146"
                 };
 
-                const saveRes = await fetch('http://localhost:3000/api/users', {
+                const saveRes = await fetch('api/users', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(newUser)
@@ -171,7 +171,7 @@ window.updateAvatar = async function(thumbPath, fullPath, accentColor) {
     }
 
     try {
-        const response = await fetch('http://localhost:3000/api/users/update', {
+        const response = await fetch('api/users/update', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -225,7 +225,7 @@ window.saveBio = async function() {
 
     // 3. Guardamos en el servidor usando la ruta /update que ya tenemos
     try {
-        const response = await fetch('http://localhost:3000/api/users/update', {
+        const response = await fetch('api/users/update', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
