@@ -2,10 +2,10 @@
   "name": "pagina-zzz",
   "version": "1.0.0",
   "description": "Basado en el Sitio Oficial de Zenless Zone Zero (https://zenless.hoyoverse.com/es-es/main)",
-  "main": "vercelserver.js",
+  "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node vercelserver.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,6 @@
   },
   "homepage": "https://github.com/SoyMinee/Pagina-ZZZ#readme",
   "dependencies": {
-    
     "cors": "^2.8.6",
     "express": "^5.2.1"
   }
