@@ -12,7 +12,12 @@
       "dest": "vercelserver.js"
     },
     {
-      "handle": "filesystem"
+      "src": "/(index\\.html)?",
+      "dest": "index.html"
+    },
+    {
+      "src": "/(.*\\.(css|js|png|jpg|json|svg|mp4|webp))$",
+      "dest": "/$1"
     },
     {
       "src": "/(.*)",
