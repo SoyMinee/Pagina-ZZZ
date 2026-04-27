@@ -11,12 +11,12 @@ PROGRESO DE LA PÁGINA ##############
     1. Expositor de personajes                                     --- Hecho
     2. Guía de cada personaje                                      --- 2%
     3. Implementacion de BBDD para usuarios y control de datos     --- Hecho
-    4. Pestaña de introducción al juego, quiero probar a usar 3D   --- 90%
+    4. Pestaña de introducción al juego, quiero probar a usar 3D   --- Hecho
         -> Accesible desde la Landing Page
         -> Implementación de videos, capas y animaciones.
     5. Registro de usuarios con perfil personalizable              --- Hecho
-    6. Animaciones estilizadas con la tematica del juego           --- 98%
-    7. Responsibidad y adaptación a móviles                        --- 40%
+    6. Animaciones estilizadas con la tematica del juego           --- Hecho
+    7. Responsibidad y adaptación a móviles                        --- 90%
 
 
 SERVIDOR DE NODE.JS ################
@@ -30,5 +30,6 @@ SERVIDOR DE NODE.JS ################
             npm install express cors
     
     4. Antes de hacer debugging a index.html escribo en la terminal: node server.js
+
 
 
