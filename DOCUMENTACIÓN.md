@@ -48,12 +48,19 @@ DOCUMENTACION
 2. Funcionalidades
 
    a) Expositor de personajes
+   
    b) Inicio de sesión
+   
    c) BBDD Funcional
+   
    d) Uso de SVG y capas
+
    e) Responsividad y adaptación a móvil
+   
    f) Deploy de la web para el acceso remoto
+   
    g) Perfiles de usuario editables
+   
    h) Lista de personajes seleccionable
 
 
