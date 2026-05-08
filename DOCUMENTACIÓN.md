@@ -16,7 +16,7 @@ PROGRESO DE LA PÁGINA ##############
         -> Implementación de videos, capas y animaciones.
     5. Registro de usuarios con perfil personalizable              --- Hecho
     6. Animaciones estilizadas con la tematica del juego           --- Hecho
-    7. Responsibidad y adaptación a móviles                        --- 90%
+    7. Responsibidad y adaptación a móviles                        --- Hecho
 
 
 SERVIDOR DE NODE.JS ################
